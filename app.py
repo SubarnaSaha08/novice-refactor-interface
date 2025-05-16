@@ -24,8 +24,8 @@ def main():
         st.session_state.current_index = 0
     if "problems_solved" not in st.session_state:
         st.session_state.problems_solved = 0
-    if "difficulty_selected" not in st.session_state:
-        st.session_state.difficulty_selected = None
+    if "responses" not in st.session_state:
+        st.session_state.responses = {}
     if "next_clicked" not in st.session_state:
         st.session_state.next_clicked = False
 
@@ -43,7 +43,6 @@ def main():
                 st.session_state.problems = problems[:3]
                 st.success(f"Welcome, {st.session_state.username}!")
                 st.rerun()
-
         return
 
     # Get user-specific problems
@@ -55,11 +54,12 @@ def main():
         st.success("You have completed all problems. Click Submit to finish.")
         if st.button("Submit"):
             st.success("Your responses have been submitted successfully!")
+            st.write(st.session_state.responses)  # Debug output
             # Reset state
             st.session_state.logged_in = False
             st.session_state.current_index = 0
             st.session_state.problems_solved = 0
-            st.session_state.difficulty_selected = None
+            st.session_state.responses = {}
             st.session_state.next_clicked = False
             st.rerun()
         return
@@ -71,40 +71,118 @@ def main():
 
     # Display problem number (1, 2, 3)
     problem_number = index + 1
+    problem = problems[index]
+
+    # Key for storing responses for this problem
+    response_key = f"response_{problem['id']}"
+
+    # Initialize response structure with `None`
+    if response_key not in st.session_state.responses:
+        st.session_state.responses[response_key] = {
+            "problem_id": problem['id'],
+            "difficulty": None,
+            "code_understanding": None,
+            "logic_flow": None,
+            "function_identification": None,
+            "code_structure": None,
+            "open_ended_1": None,
+            "open_ended_2": None
+        }
+
+    response_data = st.session_state.responses[response_key]
 
     # Display current problem
-    problem = problems[index]
     st.subheader(f"Problem {problem_number}/3: {problem['question']}")
     st.code(problem['code'])
 
-    # Difficulty Selection
-    st.write("Select Difficulty (1 - Very Easy, 5 - Very Hard):")
-    cols = st.columns(5)
-    for i in range(1, 6):
-        with cols[i - 1]:
-            if st.button(str(i), key=f"difficulty_{problem['id']}_{i}"):
-                st.session_state.difficulty_selected = i
-                st.session_state.next_clicked = False  # Reset next click flag
+    # --- Survey Section Header ---
+    st.markdown("---")
+    st.subheader("**Section A: Code Comprehension Assessment**")
+    st.write("Please answer the following questions regarding your understanding of the code:")
 
-    # Next Button Logic
-    next_disabled = st.session_state.difficulty_selected is None
+
+    # Difficulty Selection as Radio Button
+    st.subheader("Survey Questions (1 - Low, 5 - High):")
+    difficulty_options = [None, 1, 2, 3, 4, 5]
+    difficulty_labels = ["Select", "1", "2", "3", "4", "5"]
+
+    response_data["difficulty"] = st.radio(
+        "How difficult do you find the problem?",
+        options=difficulty_options,
+        format_func=lambda x: difficulty_labels[difficulty_options.index(x)],
+        index=difficulty_options.index(response_data["difficulty"]) if response_data["difficulty"] is not None else 0,
+        key=f"difficulty_{problem['id']}"
+    )
+
+    response_data["code_understanding"] = st.radio(
+        "Code Understanding: How clearly do you understand the purpose of the given code?",
+        options=[None, 1, 2, 3, 4, 5],
+        format_func=lambda x: "Select" if x is None else str(x),
+        index=(response_data["code_understanding"] if response_data["code_understanding"] is not None else 0),
+        key=f"code_understanding_{problem['id']}"
+    )
+
+    response_data["logic_flow"] = st.radio(
+        "Logic Flow: How well do you understand the flow of logic in the given code?",
+        options=[None, 1, 2, 3, 4, 5],
+        format_func=lambda x: "Select" if x is None else str(x),
+        index=(response_data["logic_flow"] if response_data["logic_flow"] is not None else 0),
+        key=f"logic_flow_{problem['id']}"
+    )
+
+    response_data["function_identification"] = st.radio(
+        "Function Identification: Can you identify the key functions and their purposes in the code?",
+        options=[None, 1, 2, 3, 4, 5],
+        format_func=lambda x: "Select" if x is None else str(x),
+        index=(response_data["function_identification"] if response_data["function_identification"] is not None else 0),
+        key=f"function_identification_{problem['id']}"
+    )
+
+    response_data["code_structure"] = st.radio(
+        "Code Structure: How well is the code structured for readability and maintainability?",
+        options=[None, 1, 2, 3, 4, 5],
+        format_func=lambda x: "Select" if x is None else str(x),
+        index=(response_data["code_structure"] if response_data["code_structure"] is not None else 0),
+        key=f"code_structure_{problem['id']}"
+    )
+
+    response_data["open_ended_1"] = st.text_area(
+        "Briefly describe what the code is doing:",
+        key=f"open_ended_1_{problem['id']}",
+        value=response_data["open_ended_1"] if response_data["open_ended_1"] else ""
+    )
+
+    response_data["open_ended_2"] = st.text_area(
+        "List any sections of the code that you find particularly confusing:",
+        key=f"open_ended_2_{problem['id']}",
+        value=response_data["open_ended_2"] if response_data["open_ended_2"] else ""
+    )
+
+    # Update response data in session state
+    st.session_state.responses[response_key] = response_data
+
+    # Check if all required fields are filled
+    all_fields_filled = (
+        response_data["difficulty"] is not None and
+        response_data["code_understanding"] is not None and
+        response_data["logic_flow"] is not None and
+        response_data["function_identification"] is not None and
+        response_data["code_structure"] is not None and
+        response_data["open_ended_1"] not in [None, ""] and
+        response_data["open_ended_2"] not in [None, ""]
+    )
+
+    # Next Button
+    next_disabled = not all_fields_filled
 
     # Handle Next button click
     next_clicked = st.button("Next", disabled=next_disabled)
 
-    # Process Next button click
-    if next_clicked and not st.session_state.next_clicked:
-        # Mark as clicked to prevent double processing
-        st.session_state.next_clicked = True
-
-        # Proceed to the next problem
+    if next_clicked:
+        # Reset the flag before rerun to ensure each click is registered
+        st.session_state.next_clicked = False
         st.session_state.problems_solved += 1
         st.session_state.current_index += 1
-
-        # Reset difficulty selection for the next problem
-        st.session_state.difficulty_selected = None
-
-        # Trigger a rerun to reflect state updates immediately
         st.rerun()
 
 if __name__ == "__main__":
