@@ -24,6 +24,8 @@ def main():
         st.session_state.current_index = 0
     if "problems_solved" not in st.session_state:
         st.session_state.problems_solved = 0
+    if "difficulty_selected" not in st.session_state:
+        st.session_state.difficulty_selected = None
 
     # Login block
     if not st.session_state.logged_in:
@@ -36,63 +38,57 @@ def main():
             else:
                 st.session_state.logged_in = True
                 st.session_state.username = username.strip()
-                st.session_state.problems = problems[:3]  # Limit to 3 problems
+                st.session_state.problems = problems[:3]
                 st.success(f"Welcome, {st.session_state.username}!")
+                st.rerun()
         return
 
     # Get user-specific problems
     problems = st.session_state.problems
     max_index = len(problems) - 1
 
-    # Check if user has completed 3 problems
+    # Check if user has completed all problems
     if st.session_state.problems_solved >= 3:
-        st.success("You have completed 3 problems. Logging out...")
-        st.session_state.logged_in = False
-        st.session_state.current_index = 0
-        st.session_state.problems_solved = 0
-        st.rerun()
+        st.success("You have completed all problems. Click Submit to finish.")
+        if st.button("Submit"):
+            st.success("Your responses have been submitted successfully!")
+            st.session_state.logged_in = False
+            st.session_state.current_index = 0
+            st.session_state.problems_solved = 0
+            st.session_state.difficulty_selected = None
+            st.rerun()
+        return
 
     # Ensure index is within bounds
     index = st.session_state.current_index
     index = max(0, min(index, max_index))
     st.session_state.current_index = index
 
+    # Display problem number (1, 2, 3)
+    problem_number = index + 1
+
     # Display current problem
     problem = problems[index]
-    st.subheader(f"Problem {problem['id']}: {problem['question']}")
+    st.subheader(f"Problem {problem_number}/3: {problem['question']}")
     st.code(problem['code'])
 
-    # Difficulty Rating
-    difficulty = st.slider(
-        f"Rate the difficulty of Problem {problem['id']} (1 - Very Easy, 5 - Very Hard)",
-        1, 5, 3, key=f"difficulty_{problem['id']}"
-    )
+    # Difficulty Selection
+    st.write("Select Difficulty (1 - Very Easy, 5 - Very Hard):")
+    cols = st.columns(5)
+    for i in range(1, 6):
+        with cols[i - 1]:
+            if st.button(str(i), key=f"difficulty_{problem['id']}_{i}"):
+                st.session_state.difficulty_selected = i
 
-    # Feedback input
-    feedback = st.text_area(f"Provide feedback for Problem {problem['id']}", key=f"feedback_{problem['id']}")
+    # Next Button
+    next_disabled = st.session_state.difficulty_selected is None
 
-    # Navigation buttons
-    col1, col2, col3 = st.columns([1, 1, 1])
-
-    # Previous button
-    with col1:
-        if st.button("Previous", disabled=(index == 0)):
-            st.session_state.current_index -= 1
-
-    # Next button
-    with col2:
-        if st.button("Next", disabled=(index == max_index)):
-            # Increment problems solved only when moving forward
-            st.session_state.problems_solved += 1
-            st.session_state.current_index += 1
-
-    # Logout button
-    with col3:
-        if st.button("Logout"):
-            st.session_state.logged_in = False
-            st.session_state.current_index = 0
-            st.session_state.problems_solved = 0
-            st.rerun()
+    # Next button logic
+    if st.button("Next", disabled=next_disabled):
+        # Save difficulty selection and proceed to the next problem
+        st.session_state.problems_solved += 1
+        st.session_state.current_index += 1
+        st.session_state.difficulty_selected = None
 
 if __name__ == "__main__":
     main()
