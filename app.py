@@ -26,6 +26,8 @@ def main():
         st.session_state.problems_solved = 0
     if "difficulty_selected" not in st.session_state:
         st.session_state.difficulty_selected = None
+    if "next_clicked" not in st.session_state:
+        st.session_state.next_clicked = False
 
     # Login block
     if not st.session_state.logged_in:
@@ -41,6 +43,7 @@ def main():
                 st.session_state.problems = problems[:3]
                 st.success(f"Welcome, {st.session_state.username}!")
                 st.rerun()
+
         return
 
     # Get user-specific problems
@@ -52,10 +55,12 @@ def main():
         st.success("You have completed all problems. Click Submit to finish.")
         if st.button("Submit"):
             st.success("Your responses have been submitted successfully!")
+            # Reset state
             st.session_state.logged_in = False
             st.session_state.current_index = 0
             st.session_state.problems_solved = 0
             st.session_state.difficulty_selected = None
+            st.session_state.next_clicked = False
             st.rerun()
         return
 
@@ -79,16 +84,28 @@ def main():
         with cols[i - 1]:
             if st.button(str(i), key=f"difficulty_{problem['id']}_{i}"):
                 st.session_state.difficulty_selected = i
+                st.session_state.next_clicked = False  # Reset next click flag
 
-    # Next Button
+    # Next Button Logic
     next_disabled = st.session_state.difficulty_selected is None
 
-    # Next button logic
-    if st.button("Next", disabled=next_disabled):
-        # Save difficulty selection and proceed to the next problem
+    # Handle Next button click
+    next_clicked = st.button("Next", disabled=next_disabled)
+
+    # Process Next button click
+    if next_clicked and not st.session_state.next_clicked:
+        # Mark as clicked to prevent double processing
+        st.session_state.next_clicked = True
+
+        # Proceed to the next problem
         st.session_state.problems_solved += 1
         st.session_state.current_index += 1
+
+        # Reset difficulty selection for the next problem
         st.session_state.difficulty_selected = None
+
+        # Trigger a rerun to reflect state updates immediately
+        st.rerun()
 
 if __name__ == "__main__":
     main()
