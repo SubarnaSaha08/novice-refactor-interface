@@ -86,7 +86,13 @@ def main():
             "function_identification": None,
             "code_structure": None,
             "open_ended_1": None,
-            "open_ended_2": None
+            "open_ended_2": None,
+            "mental_demand": None,
+            "physical_demand": None,
+            "temporal_demand": None,
+            "performance": None,
+            "effort": None,
+            "frustration": None,
         }
 
     response_data = st.session_state.responses[response_key]
@@ -95,92 +101,75 @@ def main():
     st.subheader(f"Problem {problem_number}/3: {problem['question']}")
     st.code(problem['code'])
 
-    # --- Survey Section Header ---
+    # --- Section A: Code Comprehension Assessment ---
     st.markdown("---")
     st.subheader("**Section A: Code Comprehension Assessment**")
     st.write("Please answer the following questions regarding your understanding of the code:")
 
-
-    # Difficulty Selection as Radio Button
-    st.subheader("Survey Questions (1 - Low, 5 - High):")
-    difficulty_options = [None, 1, 2, 3, 4, 5]
-    difficulty_labels = ["Select", "1", "2", "3", "4", "5"]
-
     response_data["difficulty"] = st.radio(
-        "How difficult do you find the problem?",
-        options=difficulty_options,
-        format_func=lambda x: difficulty_labels[difficulty_options.index(x)],
-        index=difficulty_options.index(response_data["difficulty"]) if response_data["difficulty"] is not None else 0,
+        "How difficult do you find the problem? (1 - Very Easy, 5 - Very Hard)",
+        [None, 1, 2, 3, 4, 5],
+        index=(response_data["difficulty"] if response_data["difficulty"] is not None else 0),
         key=f"difficulty_{problem['id']}"
     )
 
     response_data["code_understanding"] = st.radio(
-        "Code Understanding: How clearly do you understand the purpose of the given code?",
-        options=[None, 1, 2, 3, 4, 5],
-        format_func=lambda x: "Select" if x is None else str(x),
-        index=(response_data["code_understanding"] if response_data["code_understanding"] is not None else 0),
+        "How clearly do you understand the purpose of the given code?",
+        [None, 1, 2, 3, 4, 5],
         key=f"code_understanding_{problem['id']}"
     )
 
     response_data["logic_flow"] = st.radio(
-        "Logic Flow: How well do you understand the flow of logic in the given code?",
-        options=[None, 1, 2, 3, 4, 5],
-        format_func=lambda x: "Select" if x is None else str(x),
-        index=(response_data["logic_flow"] if response_data["logic_flow"] is not None else 0),
+        "How well do you understand the flow of logic in the given code?",
+        [None, 1, 2, 3, 4, 5],
         key=f"logic_flow_{problem['id']}"
     )
 
     response_data["function_identification"] = st.radio(
-        "Function Identification: Can you identify the key functions and their purposes in the code?",
-        options=[None, 1, 2, 3, 4, 5],
-        format_func=lambda x: "Select" if x is None else str(x),
-        index=(response_data["function_identification"] if response_data["function_identification"] is not None else 0),
+        "Can you identify the key functions and their purposes in the code?",
+        [None, 1, 2, 3, 4, 5],
         key=f"function_identification_{problem['id']}"
     )
 
     response_data["code_structure"] = st.radio(
-        "Code Structure: How well is the code structured for readability and maintainability?",
-        options=[None, 1, 2, 3, 4, 5],
-        format_func=lambda x: "Select" if x is None else str(x),
-        index=(response_data["code_structure"] if response_data["code_structure"] is not None else 0),
+        "How well is the code structured for readability and maintainability?",
+        [None, 1, 2, 3, 4, 5],
         key=f"code_structure_{problem['id']}"
     )
 
     response_data["open_ended_1"] = st.text_area(
         "Briefly describe what the code is doing:",
-        key=f"open_ended_1_{problem['id']}",
-        value=response_data["open_ended_1"] if response_data["open_ended_1"] else ""
+        key=f"open_ended_1_{problem['id']}"
     )
 
     response_data["open_ended_2"] = st.text_area(
         "List any sections of the code that you find particularly confusing:",
-        key=f"open_ended_2_{problem['id']}",
-        value=response_data["open_ended_2"] if response_data["open_ended_2"] else ""
+        key=f"open_ended_2_{problem['id']}"
     )
 
-    # Update response data in session state
+    # --- Section B: Cognitive Load Assessment (NASA-TLX) ---
+    st.markdown("---")
+    st.subheader("**Section B: Cognitive Load Assessment (NASA-TLX)**")
+    st.write("For each of the following dimensions, rate your experience (1-5):")
+
+    response_data["mental_demand"] = st.radio("Mental Demand: How mentally demanding was the task?", [None, 1, 2, 3, 4, 5], key=f"mental_demand_{problem['id']}")
+    response_data["physical_demand"] = st.radio("Physical Demand: How physically demanding was the task?", [None, 1, 2, 3, 4, 5], key=f"physical_demand_{problem['id']}")
+    response_data["temporal_demand"] = st.radio("Temporal Demand: How hurried or rushed did you feel during the task?", [None, 1, 2, 3, 4, 5], key=f"temporal_demand_{problem['id']}")
+    response_data["performance"] = st.radio("Performance: How successful were you in achieving the refactoring goals?", [None, 1, 2, 3, 4, 5], key=f"performance_{problem['id']}")
+    response_data["effort"] = st.radio("Effort: How hard did you have to work to accomplish the task?", [None, 1, 2, 3, 4, 5], key=f"effort_{problem['id']}")
+    response_data["frustration"] = st.radio("Frustration: How insecure, discouraged, irritated, or stressed did you feel during the task?", [None, 1, 2, 3, 4, 5], key=f"frustration_{problem['id']}")
+
+    # Update session state
     st.session_state.responses[response_key] = response_data
 
-    # Check if all required fields are filled
-    all_fields_filled = (
-        response_data["difficulty"] is not None and
-        response_data["code_understanding"] is not None and
-        response_data["logic_flow"] is not None and
-        response_data["function_identification"] is not None and
-        response_data["code_structure"] is not None and
-        response_data["open_ended_1"] not in [None, ""] and
-        response_data["open_ended_2"] not in [None, ""]
+    # Check if all fields are filled
+    all_filled = all(
+        value is not None for value in response_data.values()
     )
 
     # Next Button
-    next_disabled = not all_fields_filled
-
-    # Handle Next button click
-    next_clicked = st.button("Next", disabled=next_disabled)
-
-    if next_clicked:
-        # Reset the flag before rerun to ensure each click is registered
-        st.session_state.next_clicked = False
+    next_disabled = not all_filled
+    if st.button("Next", disabled=next_disabled):
         st.session_state.problems_solved += 1
         st.session_state.current_index += 1
         st.rerun()
