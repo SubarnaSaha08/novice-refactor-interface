@@ -2,13 +2,16 @@ import streamlit as st
 import pandas as pd
 
 # Load problems from CSV
-def load_problems(csv_path):
+def load_problems(csv_path, username):
     try:
         problems_df = pd.read_csv(csv_path)
-        return problems_df.to_dict('records')
+        user_problems = problems_df[problems_df['user'] == username]
+        if user_problems.empty:
+            return [], False
+        return user_problems.to_dict('records'), True
     except Exception as e:
         st.error(f"Error loading problems: {e}")
-        return []
+        return [], False
 
 # Main function
 def main():
@@ -27,16 +30,18 @@ def main():
         st.subheader("Login")
         username = st.text_input("Enter your username")
         if st.button("Login"):
-            if username.strip():
+            problems, user_found = load_problems("problems.csv", username.strip())
+            if not user_found:
+                st.error("Username not found. Try again.")
+            else:
                 st.session_state.logged_in = True
                 st.session_state.username = username.strip()
+                st.session_state.problems = problems[:3]  # Limit to 3 problems
                 st.success(f"Welcome, {st.session_state.username}!")
-            else:
-                st.error("Username cannot be empty.")
         return
 
-    # Load problems from CSV
-    problems = load_problems("problems.csv")
+    # Get user-specific problems
+    problems = st.session_state.problems
     max_index = len(problems) - 1
 
     # Check if user has completed 3 problems
