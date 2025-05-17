@@ -1,24 +1,29 @@
 import streamlit as st
-from state.session import initialize_session
-from components.login import login_form
-from components.problem_display import handle_problem_display
+from components.login import login
+from components.task_selector import task_selector
+from components.task_page import show_task_page
 from components.completion import show_completion
-from config.settings import NUM_PROBLEMS
 
 
 def main():
-    st.title("Programming Problem Assessment")
-    initialize_session()
+    st.set_page_config(page_title="Programming Assessment", layout="wide")
+
+    if "logged_in" not in st.session_state:
+        st.session_state.logged_in = False
+    if "page" not in st.session_state:
+        st.session_state.page = "login"
 
     if not st.session_state.logged_in:
-        login_form()
-        return
-
-    if st.session_state.problems_solved >= NUM_PROBLEMS:
-        show_completion()
-        return
-
-    handle_problem_display()
+        # login() returns True if login successful, then rerun to update UI
+        if login():
+            st.rerun()
+    else:
+        if st.session_state.page == "task_selector":
+            task_selector()
+        elif st.session_state.page == "task_page":
+            show_task_page()
+        elif st.session_state.page == "completion":
+            show_completion()
 
 
 if __name__ == "__main__":

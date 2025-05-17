@@ -1,31 +1,62 @@
-import pandas as pd
 import os
-import uuid
-from datetime import datetime
+import pandas as pd
+
+AUTOSAVE_DIR = "responses"
 
 
-def save_user_responses(
-    responses_dict, username, save_path="responses", master_file="all_responses.csv"
-):
-    os.makedirs(save_path, exist_ok=True)
+def ensure_dir(path):
+    if not os.path.exists(path):
+        os.makedirs(path)
 
-    all_responses = []
-    session_id = str(uuid.uuid4())  # Unique session ID
 
-    for response in responses_dict.values():
-        response_row = response.copy()
-        response_row["username"] = username
-        response_row["session_id"] = session_id
-        response_row["timestamp"] = datetime.now().isoformat()
-        all_responses.append(response_row)
+def autosave_user_responses(responses_dict, username):
+    """Save each user's session response to a personal autosave file."""
+    ensure_dir(AUTOSAVE_DIR)
+    filepath = os.path.join(AUTOSAVE_DIR, f"{username}.csv")
 
-    df = pd.DataFrame(all_responses)
+    flattened = []
+    for task_key, answers in responses_dict.items():
+        row = {"username": username, "task_id": task_key}
+        row.update(answers)
+        flattened.append(row)
 
-    # Append to a master CSV
-    full_path = os.path.join(save_path, master_file)
-    if os.path.exists(full_path):
-        df.to_csv(full_path, mode="a", header=False, index=False)
+    df = pd.DataFrame(flattened)
+    df.to_csv(filepath, index=False)
+    return filepath
+
+
+def load_user_responses_if_exists(username):
+    filepath = os.path.join(AUTOSAVE_DIR, f"{username}.csv")
+    if not os.path.exists(filepath):
+        return None
+
+    df = pd.read_csv(filepath)
+    response_dict = {}
+    for _, row in df.iterrows():
+        task_id = row["task_id"]
+        answer_data = row.drop(["username", "task_id"]).to_dict()
+        response_dict[task_id] = answer_data
+    return response_dict
+
+
+def save_final_responses(responses_dict, username):
+    """Append or overwrite the final shared CSV (one row per task)."""
+    ensure_dir(os.path.dirname(FINAL_CSV) or ".")
+    new_rows = []
+
+    for task_key, answers in responses_dict.items():
+        row = {"username": username, "task_id": task_key}
+        row.update(answers)
+        new_rows.append(row)
+
+    new_df = pd.DataFrame(new_rows)
+
+    if os.path.exists(FINAL_CSV):
+        existing_df = pd.read_csv(FINAL_CSV)
+        # Remove previous entries by this user (if resubmitting)
+        existing_df = existing_df[existing_df["username"] != username]
+        combined_df = pd.concat([existing_df, new_df], ignore_index=True)
     else:
-        df.to_csv(full_path, index=False)
+        combined_df = new_df
 
-    return full_path
+    combined_df.to_csv(FINAL_CSV, index=False)
