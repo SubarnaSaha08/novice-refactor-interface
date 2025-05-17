@@ -27,6 +27,11 @@ def render_form(problem, response_data):
             st.session_state.responses[response_key] = response_data
             autosave_user_responses(st.session_state.responses, username)
 
+    # --- Section A: Code Comprehension Assessment ---
+    st.markdown("---")
+    st.subheader("**Section A: Code Comprehension Assessment**")
+    st.write("Please answer the following questions regarding your understanding of the code:")
+
     field("difficulty", "How difficult do you find the problem?", [None, 1, 2, 3, 4, 5])
     field(
         "code_understanding",
@@ -46,8 +51,8 @@ def render_form(problem, response_data):
     field("code_structure", "How well is the code structured?", [None, 1, 2, 3, 4, 5])
 
     for open_key, label in [
-        ("open_ended_1", "Describe what the code does"),
-        ("open_ended_2", "What parts confused you?"),
+        ("open_ended_1", "Briefly describe what the code is doing:"),
+        ("open_ended_2", "List any sections of the code that you find particularly confusing:"),
     ]:
         full_key = f"{open_key}_{pid}"
         val = st.text_area(label, key=full_key, value=response_data.get(open_key, ""))
@@ -55,6 +60,11 @@ def render_form(problem, response_data):
             response_data[open_key] = val
             st.session_state.responses[response_key] = response_data
             autosave_user_responses(st.session_state.responses, username)
+
+    # --- Section B: Cognitive Load Assessment ---
+    st.markdown("---")
+    st.subheader("**Section B: Cognitive Load Assessment**")
+    st.write("Rate your experience during the independent refactoring task (1 - Not at all, 5 - Extremely):")
 
     # NASA-TLX
     for metric in [
