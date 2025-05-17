@@ -67,12 +67,14 @@ def render_form(problem, response_data):
     st.write("Rate your experience during the independent refactoring task (1 - Not at all, 5 - Extremely):")
 
     # NASA-TLX
-    for metric in [
-        "mental_demand",
-        "physical_demand",
-        "temporal_demand",
-        "performance",
-        "effort",
-        "frustration",
-    ]:
-        field(metric, metric.replace("_", " ").title(), [None, 1, 2, 3, 4, 5])
+    descriptions = {
+        "mental_demand": "Mental Demand: How mentally demanding was the task?",
+        "physical_demand": "Physical Demand: How physically demanding was the task?",
+        "temporal_demand": "Temporal Demand: How hurried or rushed was the pace of the task?",
+        "performance": "Performance: How successful were you in accomplishing what you were asked to do?",
+        "effort": "Effort: How hard did you have to work to accomplish your level of performance?",
+        "frustration": "Frustration: How insecure, discouraged, irritated, stressed, and annoyed were you?",
+    }
+
+    for metric, description in descriptions.items():
+        field(metric, description, [None, 1, 2, 3, 4, 5])
