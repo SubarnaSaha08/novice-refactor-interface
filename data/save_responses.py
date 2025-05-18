@@ -1,5 +1,6 @@
 import os
 import pandas as pd
+from data.gdrive_uploader import upload_csv_to_gdrive
 
 AUTOSAVE_DIR = "responses"
 
@@ -12,7 +13,7 @@ def ensure_dir(path):
 def autosave_user_responses(responses_dict, username):
     """Save each user's session response to a personal autosave file."""
     ensure_dir(AUTOSAVE_DIR)
-    filepath = os.path.join(AUTOSAVE_DIR, f"{username}.csv")
+    local_filepath = os.path.join(AUTOSAVE_DIR, f"{username}.csv")
 
     flattened = []
     for task_key, answers in responses_dict.items():
@@ -21,8 +22,13 @@ def autosave_user_responses(responses_dict, username):
         flattened.append(row)
 
     df = pd.DataFrame(flattened)
-    df.to_csv(filepath, index=False)
-    return filepath
+    df.to_csv(local_filepath, index=False)
+
+    csv_bytes = df.to_csv(index=False).encode()
+    upload_csv_to_gdrive(
+        csv_bytes, f"{username}_{pd.Timestamp.now():%Y%m%d_%H%M%S}.csv"
+    )
+    return local_filepath
 
 
 def load_user_responses_if_exists(username):
