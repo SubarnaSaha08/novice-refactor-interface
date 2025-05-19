@@ -2,14 +2,18 @@ import streamlit as st
 from components.utils import is_task_complete  # import the shared check function
 
 def task_selector():
-    st.title("Select a Task")
+    session_id = st.session_state.session_id
+    
+    st.title(f"Welcome to Session {session_id}")
+    st.markdown("---")
+    st.subheader("Select a Task")
 
     task_statuses = []
     for i, problem in enumerate(st.session_state.problems):
         response_key = f"response_{problem['id']}"
         response_data = st.session_state.responses.get(response_key, {})
 
-        if is_task_complete(response_data):
+        if is_task_complete(response_data, session_id):
             status = "complete"
         elif len(response_data) > 0:
             status = "partial"

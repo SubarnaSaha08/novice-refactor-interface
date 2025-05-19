@@ -24,6 +24,7 @@ def login():
             return False
 
         # Successful login
+        st.session_state.session_id = int(username[-1])
         st.session_state.logged_in = True
         st.session_state.username = username.strip()
         st.session_state.problems = problems[:3]

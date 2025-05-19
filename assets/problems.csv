@@ -11,7 +11,8 @@ def Func1(var1):
     for i1 in range(2, int(math.sqrt(var1)) + 1):
         if var1 % i1 == 0:
             var2 = True
-    return var2",easy,a
+    return var2
+",easy,"volunteer_1,john_1"
 30,Write a python function to count all the substrings starting and ending with same characters.,"def check_Equality(s): 
     return (ord(s[0]) == ord(s[len(s) - 1])); 
 def count_Substring_With_Equal_Ends(s): 
@@ -31,7 +32,8 @@ def Func2(str2):
         for i2 in range(1, CONST1 - i1 + 1):  
             if Func1(str2[i1:i2 + i1]): 
                 var1 += 1
-    return var1",easy,b
+    return var1
+",easy,volunteer_2
 32,Write a python function to find the largest prime factor of a given number.,"import math 
 def max_Prime_Factors (n): 
     maxPrime = -1 
@@ -56,7 +58,8 @@ def Func1 (var1):
             var1 = var1 / i1 
     if var1 > CONST5: 
         var2 = var1  
-    return int(var2)",easy,c
+    return int(var2)
+",easy,c
 54,Write a function to sort the given array by using counting sort.,"def counting_sort(my_list):
     max_value = 0
     for i in range(len(my_list)):
@@ -83,7 +86,8 @@ def Func1 (var1):
         for i4 in range(arr1[i3]):
             list1[i2] = i3
             i2 += 1
-    return list1",easy,d
+    return list1
+",easy,d
 56,Write a python function to check if a given number is one less than twice its reverse.,"def rev(num):    
     rev_num = 0
     while (num > 0):  
@@ -99,7 +103,8 @@ def check(n):
     return var2
 
 def Func2(var3):
-    return (2 * Func1(var3) == var3 + 1)",easy,e
+    return (2 * Func1(var3) == var3 + 1)
+",easy,e
 61,Write a python function to count number of substrings with the sum of digits equal to their length.,"from collections import defaultdict
 def count_Substrings(s,n):
     count,sum = 0,0
@@ -119,33 +124,38 @@ def Func1(str1, CONST1):
         var2 += ord(str1[i1]) - ord('0')
         var1 += mp[var2 - (i1 + 1)]
         mp[var2 - (i1 + 1)] += 1
-    return var1",easy,f
+    return var1
+",easy,f
 63,Write a function to find the maximum difference between available pairs in the given tuple list.,"def max_difference(test_list):
   temp = [abs(b - a) for a, b in test_list]
   res = max(temp)
   return (res) ","def Func1(list1):
     list2 = [abs(var2 - var1) for var1, var2 in list1]
     var3 = max(list2)
-    return var3",easy,g
+    return var3
+",easy,g
 75,Write a function to find tuples which have all elements divisible by k from the given list of tuples.,"def find_tuples(test_list, K):
   res = [sub for sub in test_list if all(ele % K == 0 for ele in sub)]
   return (str(res)) ","def Func1(list1, CONST1):
     list2 = [arr1 for arr1 in list1 if all(var1 % CONST1 == 0 for var1 in arr1)]
-    return (str(list2))",easy,h
+    return (str(list2))
+",easy,h
 91,Write a function to check if a substring is present in a given list of string values.,"def find_substring(str1, sub_str):
    if any(sub_str in s for s in str1):
        return True
    return False","def Func1(str1, str2):
     if any(str2 in str3 for str3 in str1):
         return True
-    return False",easy,i
+    return False
+",easy,i
 96,Write a python function to find the number of divisors of a given integer.,"def divisor(n):
   for i in range(n):
     x = len([i for i in range(1,n+1) if not n % i])
   return x","def Func1(var1):
     for i1 in range(var1):
         var2 = len([i2 for i2 in range(1, var1 + 1) if not var1 % i2])
-    return var2",easy,j
+    return var2
+",easy,j
 136,Write a function to calculate electricity bill.,"def cal_electbill(units):
  if(units < 50):
     amount = units * 2.60
@@ -174,7 +184,8 @@ def Func1(str1, CONST1):
         var2 = CONST5 + CONST10 + CONST14 + ((var1 - CONST15) * CONST16)
         var3 = CONST17
     var4 = var2 + var3
-    return var4",easy,k
+    return var4
+",easy,k
 159,Write a function to print the season for the given month and day.,"def month_season(month,days):
  if month in ('January', 'February', 'March'):
 	 season = 'winter'
@@ -217,7 +228,8 @@ def Func1(str1, CONST1):
         var2 = 'autumn'
     elif (str1 == 'December') and (var1 > 20):
         var2 = 'winter'
-    return var2",easy,l
+    return var2
+",easy,l
 172,Write a function to find the occurence of characters 'std' in the given string,"def count_occurance(s):
   count=0
   for i in range(len(s)):
@@ -228,7 +240,8 @@ def Func1(str1, CONST1):
     for i1 in range(len(str1)):
         if (str1[i1] == 's' and str1[i1 + 1] == 't' and str1[i1 + 2] == 'd'):
             var1 = var1 + 1
-    return var1",easy,m
+    return var1
+",easy,m
 314,Write a function to find out the maximum sum such that no two chosen numbers are adjacent for the given rectangular grid of dimension 2 x n.,"def max_sum_rectangular_grid(grid, n) : 
 	incl = max(grid[0][0], grid[1][0]) 
 	excl = 0
@@ -243,7 +256,8 @@ def Func1(str1, CONST1):
         var3 = max(var2, var1)
         var1 = var2 + max(arr1[0][i1], arr1[1][i1])
         var2 = var3
-    return max(var2, var1)",easy,n
+    return max(var2, var1)
+",easy,n
 344,Write a python function to find number of elements with odd factors in a given range.,"def count_Odd_Squares(n,m): 
     return int(m**0.5) - int((n-1)**0.5) ","def Func(var1, var2):
     return int(var2**0.5) - int((var1 - 1)**0.5)
@@ -252,7 +266,8 @@ def Func1(str1, CONST1):
 def change_date_format(dt):
         return re.sub(r'(\d{4})-(\d{1,2})-(\d{1,2})', '\\3-\\2-\\1', dt)","import re
 def Func1(str1):
-        return re.sub(r'(\d{4})-(\d{1,2})-(\d{1,2})', '\\3-\\2-\\1', str1)",easy,p
+        return re.sub(r'(\d{4})-(\d{1,2})-(\d{1,2})', '\\3-\\2-\\1', str1)
+",easy,p
 485,Write a function to find the largest palindromic number in the given array.,"def is_palindrome(n) : 
 	divisor = 1
 	while (n / divisor >= 10) : 
@@ -288,7 +303,8 @@ def Func2(arr1, var5) :
 	for i1 in range(var5 - 1, -1, -1) : 
 		if (Func1(arr1[i1])) : 
 			return arr1[i1] 
-	return -1",easy,q
+	return -1
+",easy,q
 595,Write a python function to count minimum number of swaps required to convert one binary string to another.,"def min_Swaps(str1,str2) : 
     count = 0
     for i in range(len(str1)) :  
@@ -305,7 +321,8 @@ def Func2(arr1, var5) :
     if var1 % 2 == 0: 
         return (var1 // 2) 
     else: 
-        return (""Not Possible"")",easy,r
+        return (""Not Possible"")
+",easy,r
 617,"Write a function to check for the number of jumps required of given length to reach a point of form (d, 0) from origin in a 2d plane.","def min_Jumps(a, b, d): 
     temp = a 
     a = min(a, b) 
@@ -328,7 +345,8 @@ def Func2(arr1, var5) :
     if (var3 == var1): 
         return 1
     else:
-        return 2",easy,s
+        return 2
+",easy,s
 648,Write a function to exchange the position of every n-th value with (n+1)th value and (n+1)th value with n-th value in a given list.,"from itertools import zip_longest, chain, tee
 def exchange_elements(lst):
     lst1, lst2 = tee(iter(lst), 2)
@@ -336,7 +354,8 @@ def exchange_elements(lst):
 
 def Func1(list1):
     list2, list3 = tee(iter(list1), 2)
-    return list(chain.from_iterable(zip_longest(list1[1::2], list1[::2])))",easy,t
+    return list(chain.from_iterable(zip_longest(list1[1::2], list1[::2])))
+",easy,t
 685,Write a python function to find sum of prime numbers between 1 to n.,"def sum_Of_Primes(n): 
     prime = [True] * (n + 1)  
     p = 2
@@ -365,12 +384,14 @@ def Func1(list1):
     for i2 in range(2, var1 + 1): 
         if(arr1[i2]): 
             var3 += i2 
-    return var3",easy,user
+    return var3
+",easy,user
 697,Write a function to find number of even elements in the given list using lambda function.,"def count_even(array_nums):
    count_even = len(list(filter(lambda x: (x%2 == 0) , array_nums)))
    return count_even","def Func1(arr1):
     var1 = len(list(filter(lambda var2: (var2 % 2 == 0), arr1)))
-    return var1",easy,v
+    return var1
+",easy,v
 702,Write a function to find the minimum number of elements that should be removed such that amax-amin<=k.,"def find_ind(key, i, n, 
 			k, arr):
 	ind = -1
@@ -414,7 +435,8 @@ def Func2(arr1, var2, var3):
         i2 = Func1(arr1[i1], i1, var2, var3, arr1)
         if (i2 != -1):
             var1 = min(var1, var2 - (i2 - i1 + 1))
-    return var1",easy,w
+    return var1
+",easy,w
 707,Write a python function to count the total set bits from 1 to n.,"def count_Set_Bits(n) :  
     n += 1; 
     powerOf2 = 2;   
@@ -439,7 +461,8 @@ def Func2(arr1, var2, var3):
         else: 
             var3 += 0
         var2 <<= 1    
-    return var3",easy,x
+    return var3
+",easy,x
 711,Write a python function to check whether the product of digits of a number at even and odd places is equal or not.,"def product_Equal(n): 
     if n < 10: 
         return False
@@ -471,7 +494,8 @@ def Func2(arr1, var2, var3):
         var1 = var1 // 10
     if var2 == var3: 
         return True
-    return False",easy,y
+    return False
+",easy,y
 733,Write a function to find the index of the first occurrence of a given number in a sorted array.,"def find_first_occurrence(A, x):
     (left, right) = (0, len(A) - 1)
     result = -1
@@ -496,7 +520,8 @@ def Func2(arr1, var2, var3):
             var3 = var5 - 1
         else:
             var2 = var5 + 1
-    return var4",easy,z
+    return var4
+",easy,z
 793,Write a python function to find the last position of an element in a sorted array.,"def last(arr,x,n):
     low = 0
     high = n - 1
@@ -523,12 +548,14 @@ def Func2(arr1, var2, var3):
         else:
             var5 = var6
             var3 = var6 + 1
-    return var5",easy,a
+    return var5
+",easy,a
 817,Write a function to find numbers divisible by m or n from a list of numbers using lambda function.,"def div_of_nums(nums,m,n):
  result = list(filter(lambda x: (x % m == 0 or x % n == 0), nums)) 
  return result","def Func1(arr1, var1, var2):
     list1 = list(filter(lambda i1: (i1 % var1 == 0 or i1 % var2 == 0), arr1))
-    return list1",easy,b
+    return list1
+",easy,b
 819,Write a function to count the frequency of consecutive duplicate elements in a given list of numbers.,"def count_duplic(lists):
     element = []
     frequency = []
@@ -560,7 +587,8 @@ def Func2(arr1, var2, var3):
             var1 = 1
     list3.append(var1)
     list2.append(list1[i1 + 1])
-    return list2, list3",easy,c
+    return list2, list3
+",easy,c
 822,Write a function to return true if the password is valid.,"import re
 def pass_validity(p):
  x = True
@@ -605,7 +633,8 @@ def Func1(str1):
             break
 
     if var1:
-        return False",easy,d
+        return False
+",easy,d
 836,Write a function to find length of the subarray having maximum sum.,"from sys import maxsize 
 def max_sub_array_sum(a,size): 
 	max_so_far = -maxsize - 1
@@ -639,7 +668,8 @@ def Func1(arr1, var1):
         if var3 < 0:
             var3 = 0
             var6 = i1 + 1
-    return (var5 - var4 + 1)",easy,e
+    return (var5 - var4 + 1)
+",easy,e
 846,Write a function to find the minimum number of platforms required for a railway/bus station.,"def find_platform(arr, dep, n): 
     arr.sort() 
     dep.sort() 
@@ -672,7 +702,8 @@ def Func1(arr1, var1):
             i2 += 1
         if (var2 > var3):  
             var3 = var2           
-    return var3",easy,f
+    return var3
+",easy,f
 849,Write a python function to find sum of all prime divisors of a given number.,"def Sum(N): 
     SumOfPrimeDivisors = [0]*(N + 1)   
     for i in range(2,N + 1) : 
@@ -685,7 +716,8 @@ def Func1(arr1, var1):
         if arr1[i1] == 0: 
             for i2 in range(i1, var1 + 1, i1): 
                 arr1[i2] += i1           
-    return arr1[var1]",easy,g
+    return arr1[var1]
+",easy,g
 853,Write a python function to find sum of odd factors of a number.,"import math
 def sum_of_odd_Factors(n): 
     res = 1
@@ -721,7 +753,8 @@ def Func1(var1):
         var2 *= var4  
     if var1 >= 2: 
         var2 *= (1 + var1) 
-    return var2",easy,h
+    return var2
+",easy,h
 855,Write a python function to check for even parity of a given number.,"def check_Even_Parity(x): 
     parity = 0
     while (x != 0): 
@@ -738,7 +771,8 @@ def Func1(var1):
     if (var2 % 2 == 0): 
         return True
     else: 
-        return False",easy,i
+        return False
+",easy,i
 856,Write a python function to find minimum adjacent swaps required to sort binary array.,"def find_Min_Swaps(arr,n) : 
     noOfZeroes = [0] * n 
     count = 0 
@@ -761,7 +795,8 @@ def Func1(var1):
     for i2 in range(0, var1): 
         if (arr1[i2] == 1): 
             var2 = var2 + list1[i2] 
-    return var2",easy,j
+    return var2
+",easy,j
 859,Write a function to generate all sublists of a given list.,"from itertools import combinations
 def sub_lists(my_list):
 	subs = []
@@ -777,7 +812,8 @@ def Func1(list1):
 		arr1 = [list(x) for x in combinations(list1, i1)]
 		if len(arr1) > 0:
 			list2.extend(arr1)
-	return list2",easy,k
+	return list2
+",easy,k
 863,Write a function to find the length of the longest sub-sequence such that elements in the subsequences are consecutive integers.,"def find_longest_conseq_subseq(arr, n): 
 	ans = 0
 	count = 0
@@ -808,7 +844,8 @@ def Func1(list1):
 		else: 
 			var3 = 1
 		var2 = max(var2, var3) 
-	return var2",easy,l
+	return var2
+",easy,l
 871,Write a python function to check whether the given strings are rotations of each other or not.,"def are_Rotations(string1,string2): 
     size1 = len(string1) 
     size2 = len(string2) 
@@ -852,7 +889,8 @@ def Func1(list1):
                 var2 += var1
                 break
             if (i1 == list1[-1] and var2 % i1 == 0):
-                return var2",easy,n
+                return var2
+",easy,n
 903,Write a python function to count the total unset bits from 1 to n.,"def count_Unset_Bits(n) :  
     cnt = 0;  
     for i in range(1,n + 1) : 
@@ -869,14 +907,16 @@ def Func1(list1):
             if (var2 % 2 == 0) : 
                 var1 += 1  
             var2 = var2 // 2  
-    return var1  ",easy,o
+    return var1  
+",easy,o
 909,Write a function to find the previous palindrome of a specified number.,"def previous_palindrome(num):
     for x in range(num-1,0,-1):
         if str(x) == str(x)[::-1]:
             return x","def Func1(var1):
     for i1 in range(var1-1, 0, -1):
         if str(i1) == str(i1)[::-1]:
-            return i1",easy,p
+            return i1
+",easy,p
 1,"Write a function to find the minimum cost path to reach (m, n) from (0, 0) for the given cost matrix cost[][] and a position (m, n) in cost[][].","R = 3
 C = 3
 def min_cost(cost, m, n): 
@@ -902,7 +942,8 @@ def Func1(arr1, var3, var4):
     for i5 in range(1, var3 + 1): 
         for i6 in range(1, var4 + 1): 
             arr2[i5][i6] = min(arr2[i5 - 1][i6 - 1], arr2[i5 - 1][i6], arr2[i5][i6 - 1]) + arr1[i5][i6] 
-    return arr2[var3][var4]",hard,q
+    return arr2[var3][var4]
+",hard,q
 18,Write a function to remove characters from the first string which are present in the second string.,"NO_OF_CHARS = 256
 def str_to_list(string): 
 	temp = [] 
@@ -957,7 +998,8 @@ def Func4(str3, str4):
 			list3[var2] = list3[var1] 
 			var2 += 1
 		var1 += 1
-	return Func2(list3[0:var2])",hard,r
+	return Func2(list3[0:var2])
+",hard,r
 28,Write a python function to find binomial co-efficient.,"def binomial_Coeff(n,k): 
     if k > n : 
        return 0
@@ -968,7 +1010,8 @@ def Func4(str3, str4):
         return 0
     if var2 == 0 or var2 == var1: 
         return 1 
-    return Func1(var1 - 1, var2 - 1) + Func1(var1 - 1, var2)",hard,s
+    return Func1(var1 - 1, var2 - 1) + Func1(var1 - 1, var2)
+",hard,s
 31,Write a function to find the top k integers that occur most frequently from given lists of sorted and distinct integers using heap queue algorithm.,"def func(nums, k):
     import collections
     d = collections.defaultdict(int)
@@ -1011,7 +1054,8 @@ def Func4(str3, str4):
     while list3:
         var2, var1 = heapq.heappop(list3)
         list4.append(var1)
-    return list4",hard,t
+    return list4
+",hard,t
 34,Write a python function to find the missing number in a sorted array.,"def find_missing(ar,N): 
     l = 0
     r = N - 1
@@ -1036,7 +1080,8 @@ def Func4(str3, str4):
             var2 = var3 - 1 
         else: 
             var1 = var3 + 1
-    return (-1) ",hard,user
+    return (-1) 
+",hard,user
 39,Write a function to check if the letters of a given string can be rearranged so that two characters that are adjacent to each other are different.,"import heapq
 from collections import Counter
 def rearange_string(S):
@@ -1070,7 +1115,8 @@ def Func1(str1):
             heapq.heappush(arr1, (var4 + 1, str2))
         if var5 + 1:
             heapq.heappush(arr1, (var5 + 1, str3))
-    return """".join(list1) + (arr1[0][1] if arr1 else """")",hard,v
+    return """".join(list1) + (arr1[0][1] if arr1 else """")
+",hard,v
 48,Write a python function to set all odd bits of a given number.,"def odd_bit_set_number(n):
     count = 0;res = 0;temp = n
     while temp > 0:
@@ -1087,7 +1133,8 @@ def Func1(str1):
             var3 |= (1 << var2)
         var2 += 1
         var4 >>= 1
-    return (var1 | var3)",hard,w
+    return (var1 | var3)
+",hard,w
 100,Write a function to find the next smallest palindrome of a specified number.,"import sys
 def next_smallest_palindrome(num):
     numstr = str(num)
@@ -1099,12 +1146,14 @@ def Func1(var1):
     str1 = str(var1)
     for i1 in range(var1 + 1, sys.maxsize):
         if str(i1) == str(i1)[::-1]:
-            return i1",hard,x
+            return i1
+",hard,x
 104,Write a function to sort each sublist of strings in a given list of lists using lambda function.,"def sort_sublists(input_list):
     result = [sorted(x, key = lambda x:x[0]) for x in input_list] 
     return result","def Func1(list1):
     list2 = [sorted(list3, key=lambda list4: list4[0]) for list3 in list1]
-    return list2",hard,y
+    return list2
+",hard,y
 187,Write a function to find the longest common subsequence for the given two sequences.,"def longest_common_subsequence(X, Y, m, n): 
     if m == 0 or n == 0: 
        return 0 
@@ -1117,7 +1166,8 @@ def Func1(var1):
     elif str1[var1-1] == str2[var2-1]:
         return 1 + Func1(str1, str2, var1-1, var2-1)
     else:
-        return max(Func1(str1, str2, var1, var2-1), Func1(str1, str2, var1-1, var2))",hard,z
+        return max(Func1(str1, str2, var1, var2-1), Func1(str1, str2, var1-1, var2))
+",hard,z
 195,Write a python function to find the first position of an element in a sorted array.,"def first(arr,x,n): 
     low = 0
     high = n - 1
@@ -1144,7 +1194,8 @@ def Func1(var1):
         else:
             var5 = var6
             var4 = var6 - 1
-    return var5",hard,a
+    return var5
+",hard,a
 235,Write a python function to set all even bits of a given number.,"def even_bit_set_number(n): 
     count = 0;res = 0;temp = n 
     while(temp > 0): 
@@ -1161,7 +1212,8 @@ def Func1(var1):
             var3 |= (CONST2 << var2)
         var2 += CONST3
         var4 >>= CONST3
-    return (var1 | var3)",hard,b
+    return (var1 | var3)
+",hard,b
 239,Write a function to find the number of possible sequences of length n such that each of the next element is greater than or equal to twice of the previous element but less than or equal to m.,"def get_total_number_of_sequences(m,n): 
 	T=[[0 for i in range(n+1)] for i in range(m+1)] 
 	for i in range(m+1): 
@@ -1186,7 +1238,8 @@ def Func1(var1):
                 arr1[i1][i2] = i1
             else:
                 arr1[i1][i2] = arr1[i1-1][i2] + arr1[i1//2][i2-1]
-    return arr1[var1][var2]",hard,c
+    return arr1[var1][var2]
+",hard,volunteer_1
 342,Write a function to find the smallest range that includes at-least one element from each of the given arrays.,"from heapq import heappop, heappush
 class Node:
     def __init__(self, value, list_num, index):
@@ -1239,7 +1292,8 @@ def Func1(list1):
         if i3 == len(list1[i2]) - 1:
             return var2
         heappush(list2, Node(list1[i2][i3 + 1], i2, i3 + 1))
-        var1 = max(var1, list1[i2][i3 + 1])",hard,d
+        var1 = max(var1, list1[i2][i3 + 1])
+",hard,volunteer_1
 367,Write a function to check if a binary tree is balanced or not.,"class Node: 
 	def __init__(self, data): 
 		self.data = data 
@@ -1275,7 +1329,8 @@ def Func2(var1):
     var3 = Func1(var1.right) 
     if (abs(var2 - var3) <= 1) and Func2(var1.left) is True and Func2(var1.right) is True: 
         return True
-    return False",hard,e
+    return False
+",hard,volunteer_2
 402,Write a function to compute the value of ncr%p.,"def ncr_modp(n, r, p): 
     C = [0 for i in range(r+1)]   
     C[0] = 1
@@ -1288,7 +1343,8 @@ def Func2(var1):
     for i2 in range(1, var1 + 1): 
         for i3 in range(min(i2, var2), 0, -1): 
             arr1[i3] = (arr1[i3] + arr1[i3 - 1]) % CONST1   
-    return arr1[var2]",hard,f
+    return arr1[var2]
+",hard,f
 493,"Write a function to calculate a grid of hexagon coordinates where function returns a list of lists containing 6 tuples of x, y point coordinates.","import math
 def calculate_polygons(startx, starty, endx, endy, radius):
     sl = (2 * radius) * math.tan(math.pi / 6)
@@ -1387,7 +1443,8 @@ def Func1(var1, var2, var3, var4, var5):
             var1 += var9
         var2 += var14
         var15 += 1
-    return list1",hard,g
+    return list1
+",hard,g
 522,Write a function to find the longest bitonic subsequence for the given array.,"def lbs(arr): 
 	n = len(arr) 
 	lis = [1 for i in range(n+1)] 
@@ -1418,7 +1475,8 @@ def Func1(var1, var2, var3, var4, var5):
     var2 = list1[0] + list2[0] - 1
     for i7 in range(1, var1): 
         var2 = max((list1[i7] + list2[i7] - 1), var2) 
-    return var2",hard,h
+    return var2
+",hard,h
 628,Write a function to replace all spaces in the given string with character * list item * list item * list item * list item '%20'.,"MAX=1000;
 def replace_spaces(string):
   string=string.strip()
@@ -1462,7 +1520,8 @@ def Func1(str1):
     else:
       str1[var4] = str1[i2]
       var4 -= 1
-  return ''.join(str1)",hard,i
+  return ''.join(str1)
+",hard,i
 721,Write a function to find a path with the maximum average over all existing paths for the given square matrix of size n*n.,"M = 100
 def maxAverageOfPath(cost, N): 
 	dp = [[0 for i in range(N + 1)] for j in range(N + 1)] 
@@ -1486,7 +1545,8 @@ def Func1(arr1, var1):
     for i1 in range(1, var1):
         for i2 in range(1, var1):
             arr2[i1][i2] = max(arr2[i1 - 1][i2], arr2[i1][i2 - 1]) + arr1[i1][i2]
-    return arr2[var1 - 1][var1 - 1] / (2 * var1 - 1)",hard,j
+    return arr2[var1 - 1][var1 - 1] / (2 * var1 - 1)
+",hard,j
 918,Write a function to count coin change.,"def coin_change(S, m, n): 
     table = [[0 for x in range(m)] for x in range(n+1)] 
     for i in range(m): 
@@ -1505,7 +1565,8 @@ def Func1(arr1, var1):
             var3 = arr2[i2 - arr1[i3]][i3] if i2 - arr1[i3] >= 0 else 0
             var4 = arr2[i2][i3 - 1] if i3 >= 1 else 0 
             arr2[i2][i3] = var3 + var4   
-    return arr2[var2][var1 - 1]",hard,k
+    return arr2[var2][var1 - 1]
+",hard,k
 923,Write a function to find the length of the shortest string that has both str1 and str2 as subsequences.,"def super_seq(X, Y, m, n):
 	if (not m):
 		return n
@@ -1520,7 +1581,8 @@ def Func1(arr1, var1):
 		return var1
 	if (arr1[var1 - 1] == arr2[var2 - 1]):
 		return 1 + Func1(arr1, arr2, var1 - 1, var2 - 1)
-	return 1 + min(Func1(arr1, arr2, var1 - 1, var2), Func1(arr1, arr2, var1, var2 - 1))",hard,l
+	return 1 + min(Func1(arr1, arr2, var1 - 1, var2), Func1(arr1, arr2, var1, var2 - 1))
+",hard,l
 927,Write a function to calculate the height of the given binary tree.,"class Node: 
 	def __init__(self, data): 
 		self.data = data 
@@ -1550,7 +1612,8 @@ def Func1(var4):
 		if (var5 > var6): 
 			return var5 + 1
 		else: 
-			return var6 + 1",hard,m
+			return var6 + 1
+",hard,m
 940,Write a function to sort the given array by using heap sort.,"def heap_sort(arr):
     heapify(arr)  
     end = len(arr) - 1
@@ -1601,7 +1664,8 @@ def Func3(arr1, var1, var2):
             arr1[var3], arr1[var4] = arr1[var4], arr1[var3]
             var3 = var4
         else:
-            return",hard,n
+            return
+",hard,n
 971,"Write a function to find the maximum number of segments of lengths a, b and c that can be formed from n.","def maximum_segments(n, a, b, c) : 
         dp = [-1] * (n + 10) 
         dp[0] = 0
@@ -1645,7 +1709,8 @@ def Func3(arr1, var1, var2):
     for i1 in range(2, var1 + 1): 
         arr1[i1] = arr1[i1 - 2] + 2 * arr2[i1 - 1] 
         arr2[i1] = arr1[i1 - 1] + arr2[i1 - 2] 
-    return arr1[var1]",medium,p
+    return arr1[var1]
+",medium,p
 9,Write a python function to find the minimum number of rotations required to get the same string.,"def find_Rotations(str): 
     tmp = str + str
     n = len(str) 
@@ -1660,7 +1725,8 @@ def Func3(arr1, var1, var2):
         str3 = str2[i1: i1 + var1] 
         if (str1 == str3): 
             return i1 
-    return var1",medium,q
+    return var1
+",medium,q
 16,Write a function to find sequences of lowercase letters joined with an underscore.,"import re
 def text_lowercase_underscore(text):
         patterns = '^[a-z]+_[a-z]+$'
@@ -1674,7 +1740,8 @@ def Func1(str1):
     if re.search(var1, str1):
         return 'Found a match!'
     else:
-        return 'Not matched!'",medium,r
+        return 'Not matched!'
+",medium,r
 20,Write a function to check if the given number is woodball or not.,"def is_woodall(x): 
 	if (x % 2 == 0): 
 		return False
@@ -1699,7 +1766,8 @@ def Func1(str1):
         var2 = var2 + 1
         if (var2 == var1): 
             return True
-    return False",medium,s
+    return False
+",medium,s
 24,Write a function to convert the given binary number to its decimal equivalent.,"def binary_to_decimal(binary): 
     binary1 = binary 
     decimal, i, n = 0, 0, 0
@@ -1716,7 +1784,8 @@ def Func1(str1):
         var2 = var2 + var4 * pow(2, i1) 
         str1 = str1 // 10
         i1 += 1
-    return var2",medium,t
+    return var2
+",medium,t
 33,Write a python function to convert a decimal number to binary number.,"def decimal_To_Binary(N): 
     B_Number = 0
     cnt = 0
@@ -1735,7 +1804,8 @@ def Func1(str1):
         var2 += var3 * var4  
         var1 //= 2 
         i1 += 1
-    return var2",medium,u
+    return var2
+",medium,volunteer_1
 45,Write a function to find the gcd of the given array elements.,"def find_gcd(x, y): 
 	while(y): 
 		x, y = y, x % y 
@@ -1757,7 +1827,8 @@ def Func2(list1):
     var3 = Func1(var1, var2)
     for i1 in range(2, len(list1)):
         var3 = Func1(var3, list1[i1])
-    return var3",medium,v
+    return var3
+",medium,"volunteer_2,john_1"
 60,Write a function to find the maximum length of the subsequence with difference between adjacent elements for the given array.,"def max_len_sub( arr, n): 
 	mls=[] 
 	max = 0
@@ -1782,7 +1853,8 @@ def Func2(list1):
     for i4 in range(var1):
         if var2 < list1[i4]:
             var2 = list1[i4]
-    return var2",medium,w
+    return var2
+",medium,w
 78,Write a python function to find number of integers with odd number of set bits.,"def count_With_Odd_SetBits(n): 
     if (n % 2 != 0): 
         return (n + 1) / 2
@@ -1797,7 +1869,8 @@ def Func2(list1):
     var3 = var1 / 2
     if (var2 % 2 != 0):
         var3 += 1
-    return var3",medium,x
+    return var3
+",medium,x
 107,Write a python function to count hexadecimal numbers for a given range.,"def count_Hexadecimal(L,R) :  
     count = 0;  
     for i in range(L,R + 1) : 
@@ -1820,12 +1893,14 @@ def Func2(list1):
                 if (var4 % 16 >= 10):
                     var3 += 1
                 var4 = var4 // 16
-    return var3",medium,y
+    return var3
+",medium,y
 111,Write a function to find common elements in given nested lists. * list item * list item * list item * list item,"def common_in_nested_lists(nestedlist):
     result = list(set.intersection(*map(set, nestedlist)))
     return result","def Func1(list1):
     list2 = list(set.intersection(*map(set, list1)))
-    return list2",medium,z
+    return list2
+",medium,z
 148,Write a function to divide a number into two parts such that the sum of digits is maximum.,"def sum_digits_single(x) : 
     ans = 0
     while x : 
@@ -1854,7 +1929,8 @@ def Func2(var1):
 
 def Func3(var1):
     var2 = Func2(var1)
-    return Func1(var2) + Func1(var1 - var2)",medium,aa
+    return Func1(var2) + Func1(var1 - var2)
+",medium,aa
 152,Write a function to sort the given array by using merge sort.,"def merge(a,b):
     c = []
     while len(a) != 0 and len(b) != 0:
@@ -1898,7 +1974,8 @@ def Func2(list4):
         var1 = len(list4)//2
         list1 = Func2(list4[:var1])
         list2 = Func2(list4[var1:])
-        return Func1(list1, list2)",medium,aa
+        return Func1(list1, list2)
+",medium,aa
 286,Write a function to find the largest sum of contiguous array in the modified array which is formed by repeating the given array k times.,"def max_sub_array_sum_repeated(a, n, k): 
 	max_so_far = -2147483648
 	max_ending_here = 0
@@ -1917,7 +1994,8 @@ def Func2(list4):
             var1 = var2
         if var2 < 0:
             var2 = 0
-    return var1",medium,aa
+    return var1
+",medium,aa
 323,Write a function to re-arrange the given array in alternating positive and negative items.,"def right_rotate(arr, n, out_of_place, cur):
 	temp = arr[cur]
 	for i in range(cur, out_of_place, -1):
@@ -1961,7 +2039,8 @@ def Func2(arr1, CONST1):
             if ((arr1[i1] >= 0 and i1 % 2 == 0) or
                 (arr1[i1] < 0 and i1 % 2 == 1)):
                 var1 = i1
-    return arr1",medium,bb
+    return arr1
+",medium,bb
 386,Write a function to find out the minimum no of swaps required for bracket balancing in the given string.,"def swap_count(s):
 	chars = s
 	count_left = 0
@@ -1992,7 +2071,8 @@ def Func2(arr1, CONST1):
         elif str2[i1] == ']':
             var2 += 1
             var4 = (var2 - var1)
-    return var3",medium,bb
+    return var3
+",medium,bb
 416,Write a function to find the maximum sum we can make by dividing number in three parts recursively and summing them up together for the given number.,"MAX = 1000000
 def breakSum(n): 
 	dp = [0]*(n+1) 
@@ -2008,7 +2088,8 @@ def Func1(var1):
     list1[1] = 1
     for i1 in range(2, var1 + 1):
         list1[i1] = max(list1[int(i1 / 2)] + list1[int(i1 / 3)] + list1[int(i1 / 4)], i1)
-    return list1[var1]",medium,bb
+    return list1[var1]
+",medium,bb
 423,Write a function to solve gold mine problem.,"def get_maxgold(gold, m, n): 
     goldTable = [[0 for i in range(n)] 
                         for j in range(m)]   
@@ -2051,7 +2132,8 @@ def Func1(var1):
     var6 = list1[0][0] 
     for i5 in range(1, var1): 
         var6 = max(var6, list1[i5][0])  
-    return var6",medium,cc
+    return var6
+",medium,cc
 463,Write a function to find the maximum product subarray of the given array.,"def max_subarray_product(arr):
 	n = len(arr)
 	max_ending_here = 1
@@ -2096,7 +2178,8 @@ def Func1(var1):
 			var4 = var2
 	if var5 == 0 and var4 == 0:
 		return 0
-	return var4",medium,cc
+	return var4
+",medium,cc
 469,Write a function to find the maximum profit earned from a maximum of k stock transactions,"def max_profit(price, k):
     n = len(price)
     final_profit = [[None for x in range(n)] for y in range(k + 1)]
@@ -2125,7 +2208,8 @@ def Func1(var1):
                     if var3 < var4:
                         var3 = var4
                 arr2[i3][i4] = max(arr2[i3][i4 - 1], var3)
-    return arr2[var1][var2 - 1]",medium,cc
+    return arr2[var1][var2 - 1]
+",medium,cc
 492,Write a function to search an element in the given array by using binary search.,"def binary_search(item_list,item):
 	first = 0
 	last = len(item_list)-1
@@ -2152,7 +2236,8 @@ def Func1(var1):
 				var3 = var5 - 1
 			else:
 				var2 = var5 + 1	
-	return var4",medium,dd
+	return var4
+",medium,dd
 597,Write a function to find kth element from the given two sorted arrays.,"def find_kth(arr1, arr2, m, n, k):
 	sorted1 = [0] * (m + n)
 	i = 0
@@ -2195,7 +2280,8 @@ def Func1(var1):
 		list1[i3] = arr2[i2]
 		i3 += 1
 		i2 += 1
-	return list1[var3 - 1]",medium,dd
+	return list1[var3 - 1]
+",medium,dd
 601,Write a function to find the longest chain which can be formed from the given set of pairs.,"class Pair(object): 
 	def __init__(self, a, b): 
 		self.a = a 
@@ -2227,7 +2313,8 @@ def Func1(arr1, var4):
 	for i4 in range(var4): 
 		if (var5 < list1[i4]): 
 			var5 = list1[i4] 
-	return var5",medium,dd
+	return var5
+",medium,dd
 622,Write a function to find the median of two sorted arrays of same size.,"def get_median(arr1, arr2, n):
   i = 0
   j = 0
@@ -2276,7 +2363,8 @@ def Func1(arr1, var4):
       var2 = var3
       var3 = arr2[i2]
       i2 += 1
-  return (var2 + var3) / 2",medium,ee
+  return (var2 + var3) / 2
+",medium,ee
 714,Write a python function to count the number of distinct power of prime factor of given number.,"def count_Fac(n):  
     m = n 
     count = 0
@@ -2313,7 +2401,8 @@ def Func1(arr1, var4):
         i1 += 1
     if var1 != 1:
         var3 += 1
-    return var3",medium,ee
+    return var3
+",medium,ee
 771,Write a function to check if the given expression is balanced or not.,"from collections import deque
 def check_expression(exp):
     if len(exp) & 1:
@@ -2343,7 +2432,8 @@ def Func1(str1):
             var1 = arr1.pop()
             if (var1 == '(' and i1 != ')') or (var1 == '{' and i1 != '}') or (var1 == '[' and i1 != ']'):
                 return False
-    return not arr1",medium,ee
+    return not arr1
+",medium,ee
 834,Write a function to generate a square matrix filled with elements from 1 to n raised to the power of 2 in spiral order.,"def generate_matrix(n):
         if n<=0:
             return [] 
@@ -2400,7 +2490,8 @@ def Func1(str1):
             arr1[i2][var4] = var6
             var6 += 1
         var4 += 1
-    return arr1",medium,ff
+    return arr1
+",medium,ff
 862,Write a function to find the occurrences of n most common words in a given text.,"from collections import Counter
 import re
 def n_common_words(text,n):
@@ -2412,7 +2503,8 @@ import re
 def Func1(str1, var1):
   list1 = re.findall('\w+', str1)
   list2 = Counter(list1).most_common(var1)
-  return list(list2)",medium,ff
+  return list(list2)
+",medium,ff
 895,Write a function to find the maximum sum of subsequences of given array with no adjacent elements.,"def max_sum_subseq(A):
     n = len(A)
     if n == 1:
@@ -2433,7 +2525,8 @@ def Func1(str1, var1):
     for i1 in range(2, var1):
         list1[i1] = max(list1[i1 - 1], list1[i1 - 2] + arr1[i1])
         list1[i1] = max(list1[i1], arr1[i1])
-    return list1[var1 - 1]",medium,ff
+    return list1[var1 - 1]
+",medium,ff
 898,"Write a function to extract specified number of elements from a given list, which follow each other continuously.","from itertools import groupby 
 def extract_elements(numbers, n):
     result = [i for i, j in groupby(numbers) if len(list(j)) == n] 
@@ -2441,14 +2534,16 @@ def extract_elements(numbers, n):
 
 def Func1(arr1, var1):
     list1 = [i1 for i1, i2 in groupby(arr1) if len(list(i2)) == var1] 
-    return list1",medium,gg
+    return list1
+",medium,gg
 933,Write a function to convert camel case string to snake case string by using regex.,"import re
 def camel_to_snake(text):
   str1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', text)
   return re.sub('([a-z0-9])([A-Z])', r'\1_\2', str1).lower()","import re
 def Func1(var1):
   str1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', var1)
-  return re.sub('([a-z0-9])([A-Z])', r'\1_\2', str1).lower()",medium,gg
+  return re.sub('([a-z0-9])([A-Z])', r'\1_\2', str1).lower()
+",medium,gg
 938,Write a function to find three closest elements from three sorted arrays.,"import sys 
 
 def find_closet(A, B, C, p, q, r): 
@@ -2501,7 +2596,8 @@ def Func1(arr1, arr2, arr3, var1, var2, var3):
             i2 = i2 + 1
         else: 
             i3 = i3 + 1
-    return arr1[var5], arr2[var6], arr3[var7]",medium,gg
+    return arr1[var5], arr2[var6], arr3[var7]
+",medium,gg
 952,Write a function to compute the value of ncr mod p.,"def nCr_mod_p(n, r, p): 
 	if (r > n- r): 
 		r = n - r 
@@ -2518,4 +2614,5 @@ def Func1(arr1, arr2, arr3, var1, var2, var3):
 	for i2 in range(1, var1 + 1): 
 		for i3 in range(min(i2, var2), 0, -1): 
 			arr1[i3] = (arr1[i3] + arr1[i3 - 1]) % var3 
-	return arr1[var2]",medium,hh
+	return arr1[var2]
+",medium,hh

@@ -8,9 +8,10 @@ def show_response_form_page():
     problem = st.session_state.problems[index]
     response_key = f"response_{problem['id']}"
     response = st.session_state.responses.get(response_key, {})
+    session_id = st.session_state.session_id
     
     # Check completion properly
-    if is_task_complete(response):
+    if is_task_complete(response, session_id):
         st.success("✅ This task is complete!")
     else:
         st.warning("⚠️ Some fields are incomplete.")
