@@ -4,6 +4,7 @@ from components.task_selector import task_selector
 from components.task_page import show_task_page
 from components.completion import show_completion
 from components.response_form_page import show_response_form_page
+from components.admin_page import show_admin_options
 
 
 def main():
@@ -25,9 +26,10 @@ def main():
             show_task_page()
         elif st.session_state.page == "completion":
             show_completion()
-        elif st.session_state.get("page") == "response_form_page":
+        elif st.session_state.page == "response_form_page":
             show_response_form_page()
-
+        elif st.session_state.page == "admin_page":
+            show_admin_options()
 
 if __name__ == "__main__":
     main()

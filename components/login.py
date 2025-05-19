@@ -13,8 +13,9 @@ def login():
             st.warning("Please enter your username.")
             return False  # Indicate login not successful
         
-        if username is "admin1413":
-            st.session_state.page = "task_selector"
+        if username == "admin244466666":
+            st.session_state.logged_in = True
+            st.session_state.page = "admin_page"
             return True
             
         problems, found = load_problems(username=username.strip())
