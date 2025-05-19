@@ -1,25 +1,44 @@
 import streamlit as st
-from components.shared_form import render_form
-from components.utils import is_task_complete
-
+import time
+from streamlit.components.v1 import html
 
 def show_task_page():
     index = st.session_state.current_index
     problem = st.session_state.problems[index]
-    response_key = f"response_{problem['id']}"
-    response = st.session_state.responses.get(response_key, {})
 
-    # Check completion properly
-    if is_task_complete(response):
-        st.success("✅ This task is complete!")
-    else:
-        st.warning("⚠️ Some fields are incomplete.")
+    # Set start time if not already set or task changed
+    if "start_time" not in st.session_state or st.session_state.get("current_index") != index:
+        st.session_state.start_time = time.time()
+        st.session_state.current_index = index
 
     st.subheader(f"Problem {index+1}: {problem['question']}")
     st.code(problem["code"])
 
-    render_form(problem, response)
+    # Timer display with JavaScript
+    start_time = st.session_state.start_time
+    timer_html = f"""
+    <div id="timer_{index}" style="font-size: 18px; margin-bottom: 10px; color: white;">
+        Elapsed Time: <span id="elapsed_{index}">00:00</span>
+    </div>
+    <script>
+        function updateTimer() {{
+            try {{
+                var start = {start_time * 1000};
+                var now = Date.now();
+                var elapsed = Math.floor((now - start) / 1000);
+                var minutes = Math.floor(elapsed / 60).toString().padStart(2, '0');
+                var seconds = (elapsed % 60).toString().padStart(2, '0');
+                document.getElementById('elapsed_{index}').innerText = minutes + ':' + seconds;
+            }} catch (e) {{
+                console.error('Timer error:', e);
+            }}
+        }}
+        updateTimer();
+        setInterval(updateTimer, 1000);
+    </script>
+    """
+    html(timer_html, height=40)
 
-    if st.button("⬅️ Back to Task List"):
-        st.session_state.page = "task_selector"
+    if st.button("➡️ Next", key=f"responses_for_task_{index}"):
+        st.session_state.page = "response_form_page"
         st.rerun()

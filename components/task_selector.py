@@ -24,8 +24,13 @@ def task_selector():
         with col:
             label = f"{i+1}"
             status = task_statuses[i]
+            
+            # Determine if button is disabled
+            is_disabled = i > 0 and task_statuses[i-1] != "complete"
 
             color = {"complete": "green", "partial": "red", "empty": "lightgray"}[status]
+            if is_disabled:
+                color = "gray"
 
             button_style = f"""
                 <div style="text-align:center;">
@@ -34,7 +39,7 @@ def task_selector():
                     </button>
                 </div>
             """
-            if st.button(f"Go to Task {i+1}", key=f"go_task_{i}"):
+            if st.button(f"Go to Task {i+1}", key=f"go_task_{i}", disabled=is_disabled):
                 st.session_state.current_index = i
                 st.session_state.page = "task_page"
                 st.rerun()

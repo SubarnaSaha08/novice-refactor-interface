@@ -28,7 +28,6 @@ def render_form(problem, response_data):
             autosave_user_responses(st.session_state.responses, username)
 
     # --- Section A: Code Comprehension Assessment ---
-    st.markdown("---")
     st.subheader("**Section A: Code Comprehension Assessment**")
     st.write("Please answer the following questions regarding your understanding of the code:")
 

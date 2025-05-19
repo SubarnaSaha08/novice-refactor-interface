@@ -2,7 +2,6 @@ import pandas as pd
 
 CSV_PATH = "assets/problems.csv"
 
-
 def load_problems(username, csv_path=CSV_PATH):
     try:
         df = pd.read_csv(csv_path)
