@@ -17,7 +17,7 @@ def show_completion():
         st.stop()
 
     # Save responses
-    file_path = autosave_user_responses(responses, username)
+    file_path = autosave_user_responses(responses, username, True)
     st.success(f"Responses saved to `{file_path}` ✅")
 
     # Show summary or download option (optional)

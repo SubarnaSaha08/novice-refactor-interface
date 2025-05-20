@@ -10,7 +10,7 @@ def ensure_dir(path):
         os.makedirs(path)
 
 
-def autosave_user_responses(responses_dict, username):
+def autosave_user_responses(responses_dict, username, is_final_save):
     """Save each user's session response to a personal autosave file."""
     ensure_dir(AUTOSAVE_DIR)
     local_filepath = os.path.join(AUTOSAVE_DIR, f"{username}.csv")
@@ -23,11 +23,11 @@ def autosave_user_responses(responses_dict, username):
 
     df = pd.DataFrame(flattened)
     df.to_csv(local_filepath, index=False)
-
-    csv_bytes = df.to_csv(index=False).encode()
-    # upload_csv_to_gdrive(
-    #     csv_bytes, f"{username}_{pd.Timestamp.now():%Y%m%d_%H%M%S}.csv"
-    # )
+    
+    if is_final_save:
+        csv_bytes = df.to_csv(index=False).encode()
+        upload_csv_to_gdrive(csv_bytes, f"{username}_{pd.Timestamp.now():%Y%m%d_%H%M%S}.csv")
+        
     return local_filepath
 
 
