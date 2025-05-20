@@ -15,6 +15,7 @@ def show_task_page():
     st.subheader(f"Problem {index+1}: {problem['question']}")
     st.markdown("[See Instructions](https://docs.google.com/document/d/1kg68XyJLMlI3LZbRfUmfuqVoirruVKe2VVsVebf3TKE/edit?tab=t.0#heading=h.3c80ktufw1pg)", unsafe_allow_html=True)
     if session_id == 2:
+        st.markdown("[Instruction Video for Session 2](https://drive.google.com/file/d/1XZo5Spn6nOwI1rrnT7mejLhQXCt7hZsR/view?usp=drive_link)", unsafe_allow_html=True)
         st.markdown("[Use RefactorGPT](https://chatgpt.com/g/g-6801a23d42488191bd410191cd8512a1-beginner-code-refactor)", unsafe_allow_html=True)
     st.code(problem["code"])
 

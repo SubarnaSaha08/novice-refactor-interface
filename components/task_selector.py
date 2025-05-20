@@ -5,6 +5,12 @@ def task_selector():
     session_id = st.session_state.session_id
     
     st.title(f"Welcome to Session {session_id}")
+
+    st.markdown("[See Instructions](https://docs.google.com/document/d/1kg68XyJLMlI3LZbRfUmfuqVoirruVKe2VVsVebf3TKE/edit?tab=t.0#heading=h.3c80ktufw1pg)", unsafe_allow_html=True)
+    if session_id == 2:
+        st.markdown("[Instruction Video for Session 2](https://drive.google.com/file/d/1XZo5Spn6nOwI1rrnT7mejLhQXCt7hZsR/view?usp=drive_link)", unsafe_allow_html=True)
+        st.markdown("[Use RefactorGPT](https://chatgpt.com/g/g-6801a23d42488191bd410191cd8512a1-beginner-code-refactor)", unsafe_allow_html=True)
+
     st.markdown("---")
     st.subheader("Select a Task")
 
