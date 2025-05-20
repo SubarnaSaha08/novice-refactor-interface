@@ -25,9 +25,9 @@ def autosave_user_responses(responses_dict, username):
     df.to_csv(local_filepath, index=False)
 
     csv_bytes = df.to_csv(index=False).encode()
-    upload_csv_to_gdrive(
-        csv_bytes, f"{username}_{pd.Timestamp.now():%Y%m%d_%H%M%S}.csv"
-    )
+    # upload_csv_to_gdrive(
+    #     csv_bytes, f"{username}_{pd.Timestamp.now():%Y%m%d_%H%M%S}.csv"
+    # )
     return local_filepath
 
 

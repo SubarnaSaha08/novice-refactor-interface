@@ -33,27 +33,27 @@ def render_form(problem, response_data):
         st.subheader("**Section A: Code Comprehension Assessment**")
         st.write("Please answer the following questions regarding your understanding of the code:")
 
-        field("difficulty", "How difficult do you find the problem?", [None, 1, 2, 3, 4, 5])
+        field("difficulty", "How difficult do you find the problem? (সমস্যাটি আপনার কাছে কতটা কঠিন মনে হয়?)", [None, 1, 2, 3, 4, 5])
         field(
             "code_understanding",
-            "How clearly do you understand the purpose of the given code?",
-            [None, 1, 2, 3, 4, 5],
+            "How clearly do you understand the purpose of the given code? (আপনি প্রদত্ত কোডের উদ্দেশ্য কতটা স্পষ্টভাবে বুঝতে পেরেছেন?)",
+            [None, 1, 2, 3, 4, 5]
         )
         field(
             "logic_flow",
-            "How well do you understand the flow of logic in the given code?",
+            "How well do you understand the flow of logic in the given code? (আপনি দেওয়া কোডের লজিকের প্রবাহ কতটা ভালোভাবে বুঝতে পারেন?)",
             [None, 1, 2, 3, 4, 5],
         )
         field(
             "function_identification",
-            "Can you identify key functions and their purposes?",
+            "Can you identify key functions and their purposes? (আপনি কি মূল ফাংশন এবং তাদের উদ্দেশ্য চিহ্নিত করতে পারেন?)",
             [None, 1, 2, 3, 4, 5],
         )
-        field("code_structure", "How well is the code structured?", [None, 1, 2, 3, 4, 5])
+        field("code_structure", "How well is the code structured? (কোডটি কতটা ভালোভাবে গঠিত?)", [None, 1, 2, 3, 4, 5])
 
         for open_key, label in [
-            ("open_ended_1", "Briefly describe what the code is doing:"),
-            ("open_ended_2", "List any sections of the code that you find particularly confusing:"),
+            ("open_ended_1", "Briefly describe what the code is doing (কোডটি কী করছে তা সংক্ষেপে বর্ণনা করুন):"),
+            ("open_ended_2", "List any sections of the code that you find particularly confusing (কোডের কোনো অংশ যা আপনি বিশেষভাবে বিভ্রান্তিকর মনে করেন তা তালিকাভুক্ত করুন):"),
         ]:
             full_key = f"{open_key}_{pid}"
             val = st.text_area(label, key=full_key, value=response_data.get(open_key, ""))
@@ -69,12 +69,12 @@ def render_form(problem, response_data):
 
         # NASA-TLX
         descriptions = {
-            "mental_demand": "Mental Demand: How mentally demanding was the task?",
-            "physical_demand": "Physical Demand: How physically demanding was the task?",
-            "temporal_demand": "Temporal Demand: How hurried or rushed was the pace of the task?",
-            "performance": "Performance: How successful were you in accomplishing what you were asked to do?",
-            "effort": "Effort: How hard did you have to work to accomplish your level of performance?",
-            "frustration": "Frustration: How insecure, discouraged, irritated, stressed, and annoyed were you?",
+            "mental_demand": "Mental Demand: How mentally demanding was the task? (কাজটি কতটা মানসিকভাবে চাহিদাসম্পন্ন ছিল?)",
+            "physical_demand": "Physical Demand: How physically demanding was the task? (কাজটি কতটা শারীরিকভাবে চাহিদাসম্পন্ন ছিল?)",
+            "temporal_demand": "Temporal Demand: How hurried or rushed was the pace of the task? (কাজের গতি কতটা তাড়াহুড়ো বা দ্রুত ছিল?)",
+            "performance": "Performance: How successful were you in accomplishing what you were asked to do? (আপনি যা করতে বলা হয়েছিল তা কতটা সফলভাবে সম্পন্ন করেছেন?)",
+            "effort": "Effort: How hard did you have to work to accomplish your level of performance? (আপনার কর্মক্ষমতার স্তর অর্জনের জন্য আপনাকে কতটা কঠোর পরিশ্রম করতে হয়েছিল?)",
+            "frustration": "Frustration: How insecure, discouraged, irritated, stressed, and annoyed were you? (আপনি কতটা নিরাপত্তাহীন, হতোদ্যম, বিরক্ত, চাপগ্রস্ত এবং ক্ষুব্ধ ছিলেন?)",
         }
 
         for metric, description in descriptions.items():
