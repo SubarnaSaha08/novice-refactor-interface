@@ -33,7 +33,7 @@ def render_form(problem, response_data):
         st.subheader("**Section A: Code Comprehension Assessment**")
         st.write("Please answer the following questions regarding your understanding of the code:")
 
-        field("difficulty", "How difficult do you find the problem? (সমস্যাটি আপনার কাছে কতটা কঠিন মনে হয়?)", [None, 1, 2, 3, 4, 5])
+        field("difficulty", "How difficult do you find the programming problem? (প্রোগ্রামিং প্রব্লেমটি আপনার কাছে কতটা কঠিন মনে হয়?)", [None, 1, 2, 3, 4, 5])
         field(
             "code_understanding",
             "How clearly do you understand the purpose of the given code? (আপনি প্রদত্ত কোডের উদ্দেশ্য কতটা স্পষ্টভাবে বুঝতে পেরেছেন?)",
@@ -69,12 +69,13 @@ def render_form(problem, response_data):
 
         # NASA-TLX
         descriptions = {
-            "mental_demand": "Mental Demand: How mentally demanding was the task? (কাজটি কতটা মানসিকভাবে চাহিদাসম্পন্ন ছিল?)",
-            "physical_demand": "Physical Demand: How physically demanding was the task? (কাজটি কতটা শারীরিকভাবে চাহিদাসম্পন্ন ছিল?)",
-            "temporal_demand": "Temporal Demand: How hurried or rushed was the pace of the task? (কাজের গতি কতটা তাড়াহুড়ো বা দ্রুত ছিল?)",
-            "performance": "Performance: How successful were you in accomplishing what you were asked to do? (আপনি যা করতে বলা হয়েছিল তা কতটা সফলভাবে সম্পন্ন করেছেন?)",
-            "effort": "Effort: How hard did you have to work to accomplish your level of performance? (আপনার কর্মক্ষমতার স্তর অর্জনের জন্য আপনাকে কতটা কঠোর পরিশ্রম করতে হয়েছিল?)",
-            "frustration": "Frustration: How insecure, discouraged, irritated, stressed, and annoyed were you? (আপনি কতটা নিরাপত্তাহীন, হতোদ্যম, বিরক্ত, চাপগ্রস্ত এবং ক্ষুব্ধ ছিলেন?)",
+            "mental_demand": "Mental Demand: How mentally demanding was the task? (কাজটি কি মানসিকভাবে কতটা চাপপূর্ণ ছিল? কাজটি কি সহজ নাকি জটিল, সরল নাকি কঠিন ছিল?)",
+            "physical_demand": "Physical Demand: How physically demanding was the task? Physically demanding tasks during programming comprehension include prolonged screen exposure, poor posture, repetitive hand movements, and physical strain from multitasking. "
+            "(কাজটি শারীরিকভাবে কতটা চাপপূর্ণ ছিল? কাজটি কি হালকা নাকি কঠিন, ধীর নাকি দ্রুত, বিশ্রামপূর্ণ নাকি পরিশ্রমী ছিল? (যেমন: দীর্ঘ সময় স্ক্রিনে তাকিয়ে থাকা, ভুল ভঙ্গিতে বসা, হাতের পুনরাবৃত্তিমূলক নড়াচড়া, এবং বিভিন্ন ডিভাইস বা ওয়ার্কস্পেসে কাজ করার ফলে শারীরিক চাপ))",
+            "temporal_demand": "Temporal Demand: How hurried or rushed was the pace of the task? (আপনি কতটা সময়ের চাপ অনুভব করেছেন? কাজের গতি কি ধীর ও অবসরপূর্ণ নাকি দ্রুত ও ব্যস্ত ছিল?)",
+            "performance": "Performance: How successful were you in accomplishing what you were asked to do? (আপনি কতটা সফলভাবে আপনার নির্ধারিত লক্ষ্য অর্জন করেছেন? আপনি কি কাজটি সম্পাদনে সন্তুষ্ট?)",
+            "effort": "Effort: How hard did you have to work to accomplish your level of performance? (কাজটি ঠিকভাবে সম্পন্ন করতে আপনার কতটা পরিশ্রম করতে হয়েছে?)",
+            "frustration": "Frustration: How insecure, discouraged, irritated, stressed, and annoyed were you? (এই কাজটি করতে গিয়ে আপনি কতটা হতাশ, বিরক্ত, চাপগ্রস্ত বা অসন্তুষ্ট অনুভব করেছেন?)",
         }
 
         for metric, description in descriptions.items():
@@ -125,12 +126,13 @@ def render_form(problem, response_data):
 
             # NASA-TLX
             descriptions = {
-                "mental_demand": "Mental Demand: How mentally demanding was the task after receiving CodeRefactorGPT guidance? (CodeRefactorGPT নির্দেশনা পাওয়ার পরে কাজটি কতটা মানসিকভাবে চাহিদাসম্পন্ন ছিল?)",
-                "physical_demand": "Physical Demand: How physically demanding was the task? (কাজটি কতটা শারীরিকভাবে চাহিদাসম্পন্ন ছিল?)",
-                "temporal_demand": "Temporal Demand: How hurried or rushed did you feel during the task? (কাজের সময় আপনি কতটা তাড়াহুড়ো বা দ্রুত বোধ করেছেন?)",
-                "performance": "Performance: How successful were you in achieving the refactoring goals after CodeRefactorGPT guidance? (CodeRefactorGPT নির্দেশনা পাওয়ার পরে রিফ্যাক্টরিং লক্ষ্য অর্জনে আপনি কতটা সফল ছিলেন?)",
-                "effort": "Effort: How hard did you have to work to accomplish the task after CodeRefactorGPT guidance? (CodeRefactorGPT নির্দেশনা পাওয়ার পরে কাজটি সম্পন্ন করতে আপনাকে কতটা কঠোর পরিশ্রম করতে হয়েছিল?)",
-                "frustration": "Frustration: How insecure, discouraged, irritated, stressed, and annoyed did you feel during the task after CodeRefactorGPT guidance? (CodeRefactorGPT নির্দেশনা পাওয়ার পরে কাজের সময় আপনি কতটা নিরাপত্তাহীন, হতোদ্যম, বিরক্ত, চাপগ্রস্ত এবং ক্ষুব্ধ বোধ করেছেন?)",
+            "mental_demand": "Mental Demand: How mentally demanding was the task? (কাজটি কি মানসিকভাবে কতটা চাপপূর্ণ ছিল? কাজটি কি সহজ নাকি জটিল, সরল নাকি কঠিন ছিল?)",
+            "physical_demand": "Physical Demand: How physically demanding was the task? Physically demanding tasks during programming comprehension include prolonged screen exposure, poor posture, repetitive hand movements, and physical strain from multitasking. "
+            "(কাজটি শারীরিকভাবে কতটা চাপপূর্ণ ছিল? কাজটি কি হালকা নাকি কঠিন, ধীর নাকি দ্রুত, বিশ্রামপূর্ণ নাকি পরিশ্রমী ছিল? (যেমন: দীর্ঘ সময় স্ক্রিনে তাকিয়ে থাকা, ভুল ভঙ্গিতে বসা, হাতের পুনরাবৃত্তিমূলক নড়াচড়া, এবং বিভিন্ন ডিভাইস বা ওয়ার্কস্পেসে কাজ করার ফলে শারীরিক চাপ))",
+            "temporal_demand": "Temporal Demand: How hurried or rushed was the pace of the task? (আপনি কতটা সময়ের চাপ অনুভব করেছেন? কাজের গতি কি ধীর ও অবসরপূর্ণ নাকি দ্রুত ও ব্যস্ত ছিল?)",
+            "performance": "Performance: How successful were you in accomplishing what you were asked to do? (আপনি কতটা সফলভাবে আপনার নির্ধারিত লক্ষ্য অর্জন করেছেন? আপনি কি কাজটি সম্পাদনে সন্তুষ্ট?)",
+            "effort": "Effort: How hard did you have to work to accomplish your level of performance? (কাজটি ঠিকভাবে সম্পন্ন করতে আপনার কতটা পরিশ্রম করতে হয়েছে?)",
+            "frustration": "Frustration: How insecure, discouraged, irritated, stressed, and annoyed were you? (এই কাজটি করতে গিয়ে আপনি কতটা হতাশ, বিরক্ত, চাপগ্রস্ত বা অসন্তুষ্ট অনুভব করেছেন?)",
             }
 
             for metric, description in descriptions.items():
