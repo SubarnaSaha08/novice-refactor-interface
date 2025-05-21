@@ -12,7 +12,7 @@ def Func1(var1):
         if var1 % i1 == 0:
             var2 = True
     return var2
-",easy,"muhaiminkamran@gmail.com_1,labonno2301@gmail.com_1,20240659124mou@juniv.edu_1"
+",easy,"muhaiminkamran@gmail.com_2,labonno2301@gmail.com_2,20240659124mou@juniv.edu_2"
 30,Write a python function to count all the substrings starting and ending with same characters.,"def check_Equality(s): 
     return (ord(s[0]) == ord(s[len(s) - 1])); 
 def count_Substring_With_Equal_Ends(s): 
@@ -33,7 +33,7 @@ def Func2(str2):
             if Func1(str2[i1:i2 + i1]): 
                 var1 += 1
     return var1
-",easy,"majedamitu2005@gmail.com_1,marufalinaa@gmail.com_1,sharminusha7@gmail.com_1"
+",easy,"majedamitu2005@gmail.com_2,marufalinaa@gmail.com_2,sharminusha7@gmail.com_2"
 32,Write a python function to find the largest prime factor of a given number.,"import math 
 def max_Prime_Factors (n): 
     maxPrime = -1 
@@ -59,7 +59,7 @@ def Func1 (var1):
     if var1 > 2: 
         var2 = var1  
     return int(var2)
-",easy,"barmanshanto2004@gmail.com_1,malihalaheen@gmail.com_1,charchatalukder@gmail.com_1"
+",easy,"barmanshanto2004@gmail.com_2,malihalaheen@gmail.com_2,charchatalukder@gmail.com_2"
 56,Write a python function to check if a given number is one less than twice its reverse.,"def rev(num):    
     rev_num = 0
     while (num > 0):  
@@ -76,11 +76,11 @@ def check(n):
 
 def Func2(var3):
     return (2 * Func1(var3) == var3 + 1)
-",easy,"naeemkhandoker1616@gmail.com_1,mdarahman131811@gmail.com_1,20240659155tamjeed@juniv.edu_1"
+",easy,"naeemkhandoker1616@gmail.com_2,mdarahman131811@gmail.com_2,20240659155tamjeed@juniv.edu_2"
 344,Write a python function to find number of elements with odd factors in a given range.,"def count_Odd_Squares(n,m): 
     return int(m**0.5) - int((n-1)**0.5) ","def Func(var1, var2):
     return int(var2**0.5) - int((var1 - 1)**0.5)
-",easy,"hosenuzzaman3@gmail.com_1,20240659130asif@juniv.edu_1,nowshinahad21@gmail.com_1"
+",easy,"hosenuzzaman3@gmail.com_2,20240659130asif@juniv.edu_2,nowshinahad21@gmail.com_2"
 685,Write a python function to find sum of prime numbers between 1 to n.,"def sum_Of_Primes(n): 
     prime = [True] * (n + 1)  
     p = 2
@@ -110,7 +110,7 @@ def Func2(var3):
         if(arr1[i2]): 
             var3 += i2 
     return var3
-",easy,"sufal.legend.77@gmail.com_1,deadsara03@gmail.com_1,ikrakhan3003@gmail.com_1"
+",easy,"sufal.legend.77@gmail.com_2,deadsara03@gmail.com_2,ikrakhan3003@gmail.com_2"
 711,Write a python function to check whether the product of digits of a number at even and odd places is equal or not.,"def product_Equal(n): 
     if n < 10: 
         return False
@@ -143,7 +143,7 @@ def Func2(var3):
     if var2 == var3: 
         return True
     return False
-",easy,"ayeshaesha2005@gmail.com_1,provatdasprovat84@gmail.com_1,ferdousarafahima@gmail.com_1"
+",easy,"ayeshaesha2005@gmail.com_2,provatdasprovat84@gmail.com_2,ferdousarafahima@gmail.com_2"
 849,Write a python function to find sum of all prime divisors of a given number.,"def Sum(N): 
     SumOfPrimeDivisors = [0]*(N + 1)   
     for i in range(2,N + 1) : 
@@ -157,7 +157,7 @@ def Func2(var3):
             for i2 in range(i1, var1 + 1, i1): 
                 arr1[i2] += i1           
     return arr1[var1]
-",easy,"20240659133mijanur@juniv.edu_1,samianihin@gmail.com_1,tanic08acid@gmail.com_1"
+",easy,"20240659133mijanur@juniv.edu_2,samianihin@gmail.com_2,tanic08acid@gmail.com_2"
 856,Write a python function to find minimum adjacent swaps required to sort binary array.,"def find_Min_Swaps(arr,n) : 
     noOfZeroes = [0] * n 
     count = 0 
@@ -181,7 +181,7 @@ def Func2(var3):
         if (arr1[i2] == 1): 
             var2 = var2 + list1[i2] 
     return var2
-",easy,"redwanalam45@gmail.com_1,mohanaakter05@gmail.com_1,miftahulzannat235303@gmail.com_1"
+",easy,"redwanalam45@gmail.com_2,mohanaakter05@gmail.com_2,miftahulzannat235303@gmail.com_2"
 871,Write a python function to check whether the given strings are rotations of each other or not.,"def are_Rotations(string1,string2): 
     size1 = len(string1) 
     size2 = len(string2) 
@@ -202,7 +202,7 @@ def Func2(var3):
     if (str3.count(str2) > 0): 
         return True
     else: 
-        return False",easy,"sumayaantora103@gmail.com_1,tasnihaprionti7@gmail.com_1,alishahmaria01@gmail.com_1"
+        return False",easy,"sumayaantora103@gmail.com_2,tasnihaprionti7@gmail.com_2,alishahmaria01@gmail.com_2"
 34,Write a python function to find the missing number in a sorted array.,"def find_missing(ar,N): 
     l = 0
     r = N - 1
@@ -228,7 +228,7 @@ def Func2(var3):
         else: 
             var1 = var3 + 1
     return (-1) 
-",hard,"muhaiminkamran@gmail.com_1,sufal.legend.77@gmail.com_1,labonno2301@gmail.com_1,deadsara03@gmail.com_1,20240659124mou@juniv.edu_1,ikrakhan3003@gmail.com_1"
+",hard,"muhaiminkamran@gmail.com_2,sufal.legend.77@gmail.com_2,labonno2301@gmail.com_2,deadsara03@gmail.com_2,20240659124mou@juniv.edu_2,ikrakhan3003@gmail.com_2"
 48,Write a python function to set all odd bits of a given number.,"def odd_bit_set_number(n):
     count = 0;res = 0;temp = n
     while temp > 0:
@@ -246,7 +246,7 @@ def Func2(var3):
         var2 += 1
         var4 >>= 1
     return (var1 | var3)
-",hard,"majedamitu2005@gmail.com_1,ayeshaesha2005@gmail.com_1,marufalinaa@gmail.com_1,provatdasprovat84@gmail.com_1,sharminusha7@gmail.com_1,ferdousarafahima@gmail.com_1"
+",hard,"majedamitu2005@gmail.com_2,ayeshaesha2005@gmail.com_2,marufalinaa@gmail.com_2,provatdasprovat84@gmail.com_2,sharminusha7@gmail.com_2,ferdousarafahima@gmail.com_2"
 235,Write a python function to set all even bits of a given number.,"def even_bit_set_number(n): 
     count = 0;res = 0;temp = n 
     while(temp > 0): 
@@ -264,7 +264,7 @@ def Func2(var3):
         var2 += CONST3
         var4 >>= CONST3
     return (var1 | var3)
-",hard,"barmanshanto2004@gmail.com_1,20240659133mijanur@juniv.edu_1,malihalaheen@gmail.com_1,samianihin@gmail.com_1,charchatalukder@gmail.com_1,tanic08acid@gmail.com_1"
+",hard,"barmanshanto2004@gmail.com_2,20240659133mijanur@juniv.edu_2,malihalaheen@gmail.com_2,samianihin@gmail.com_2,charchatalukder@gmail.com_2,tanic08acid@gmail.com_2"
 733,Write a function to find the index of the first occurrence of a given number in a sorted array.,"def find_first_occurrence(A, x):
     (left, right) = (0, len(A) - 1)
     result = -1
@@ -290,7 +290,7 @@ def Func2(var3):
         else:
             var2 = var5 + 1
     return var4
-",hard,"naeemkhandoker1616@gmail.com_1,redwanalam45@gmail.com_1,mdarahman131811@gmail.com_1,mohanaakter05@gmail.com_1,20240659155tamjeed@juniv.edu_1,miftahulzannat235303@gmail.com_1"
+",hard,"naeemkhandoker1616@gmail.com_2,redwanalam45@gmail.com_2,mdarahman131811@gmail.com_2,mohanaakter05@gmail.com_2,20240659155tamjeed@juniv.edu_2,miftahulzannat235303@gmail.com_2"
 793,Write a python function to find the last position of an element in a sorted array.,"def last(arr,x,n):
     low = 0
     high = n - 1
@@ -318,7 +318,7 @@ def Func2(var3):
             var5 = var6
             var3 = var6 + 1
     return var5
-",hard,"hosenuzzaman3@gmail.com_1,sumayaantora103@gmail.com_1,20240659130asif@juniv.edu_1,tasnihaprionti7@gmail.com_1,nowshinahad21@gmail.com_1,alishahmaria01@gmail.com_1"
+",hard,"hosenuzzaman3@gmail.com_2,sumayaantora103@gmail.com_2,20240659130asif@juniv.edu_2,tasnihaprionti7@gmail.com_2,nowshinahad21@gmail.com_2,alishahmaria01@gmail.com_2"
 54,Write a function to sort the given array by using counting sort.,"def counting_sort(my_list):
     max_value = 0
     for i in range(len(my_list)):
@@ -346,7 +346,7 @@ def Func2(var3):
             list1[i2] = i3
             i2 += 1
     return list1
-",medium,"muhaiminkamran@gmail.com_1,sufal.legend.77@gmail.com_1,labonno2301@gmail.com_1,deadsara03@gmail.com_1,20240659124mou@juniv.edu_1,ikrakhan3003@gmail.com_1"
+",medium,"muhaiminkamran@gmail.com_2,sufal.legend.77@gmail.com_2,labonno2301@gmail.com_2,deadsara03@gmail.com_2,20240659124mou@juniv.edu_2,ikrakhan3003@gmail.com_2"
 702,Write a function to find the minimum number of elements that should be removed such that amax-amin<=k.,"def find_ind(key, i, n, 
 			k, arr):
 	ind = -1
@@ -391,7 +391,7 @@ def Func2(arr1, var2, var3):
         if (i2 != -1):
             var1 = min(var1, var2 - (i2 - i1 + 1))
     return var1
-",medium,"majedamitu2005@gmail.com_1,ayeshaesha2005@gmail.com_1,marufalinaa@gmail.com_1,provatdasprovat84@gmail.com_1,sharminusha7@gmail.com_1,ferdousarafahima@gmail.com_1"
+",medium,"majedamitu2005@gmail.com_2,ayeshaesha2005@gmail.com_2,marufalinaa@gmail.com_2,provatdasprovat84@gmail.com_2,sharminusha7@gmail.com_2,ferdousarafahima@gmail.com_2"
 386,Write a function to find out the minimum no of swaps required for bracket balancing in the given string.,"def swap_count(s):
 	chars = s
 	count_left = 0
@@ -423,7 +423,7 @@ def Func2(arr1, var2, var3):
             var2 += 1
             var4 = (var2 - var1)
     return var3
-",medium,"barmanshanto2004@gmail.com_1,20240659133mijanur@juniv.edu_1,malihalaheen@gmail.com_1,samianihin@gmail.com_1,charchatalukder@gmail.com_1,tanic08acid@gmail.com_1"
+",medium,"barmanshanto2004@gmail.com_2,20240659133mijanur@juniv.edu_2,malihalaheen@gmail.com_2,samianihin@gmail.com_2,charchatalukder@gmail.com_2,tanic08acid@gmail.com_2"
 771,Write a function to check if the given expression is balanced or not.,"from collections import deque
 def check_expression(exp):
     if len(exp) & 1:
@@ -454,7 +454,7 @@ def Func1(str1):
             if (var1 == '(' and i1 != ')') or (var1 == '{' and i1 != '}') or (var1 == '[' and i1 != ']'):
                 return False
     return not arr1
-",medium,"naeemkhandoker1616@gmail.com_1,redwanalam45@gmail.com_1,mdarahman131811@gmail.com_1,mohanaakter05@gmail.com_1,20240659155tamjeed@juniv.edu_1,miftahulzannat235303@gmail.com_1"
+",medium,"naeemkhandoker1616@gmail.com_2,redwanalam45@gmail.com_2,mdarahman131811@gmail.com_2,mohanaakter05@gmail.com_2,20240659155tamjeed@juniv.edu_2,miftahulzannat235303@gmail.com_2"
 895,Write a function to find the maximum sum of subsequences of given array with no adjacent elements.,"def max_sum_subseq(A):
     n = len(A)
     if n == 1:
@@ -476,4 +476,4 @@ def Func1(str1):
         list1[i1] = max(list1[i1 - 1], list1[i1 - 2] + arr1[i1])
         list1[i1] = max(list1[i1], arr1[i1])
     return list1[var1 - 1]
-",medium,"hosenuzzaman3@gmail.com_1,sumayaantora103@gmail.com_1,20240659130asif@juniv.edu_1,tasnihaprionti7@gmail.com_1,nowshinahad21@gmail.com_1,alishahmaria01@gmail.com_1"
+",medium,"hosenuzzaman3@gmail.com_2,sumayaantora103@gmail.com_2,20240659130asif@juniv.edu_2,tasnihaprionti7@gmail.com_2,nowshinahad21@gmail.com_2,alishahmaria01@gmail.com_2"
