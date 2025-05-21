@@ -17,7 +17,7 @@ def show_task_page():
     if session_id == 2:
         st.markdown("[Instruction Video for Session 2](https://drive.google.com/file/d/1XZo5Spn6nOwI1rrnT7mejLhQXCt7hZsR/view?usp=drive_link)", unsafe_allow_html=True)
         st.markdown("[Use RefactorGPT](https://chatgpt.com/g/g-6801a23d42488191bd410191cd8512a1-beginner-code-refactor)", unsafe_allow_html=True)
-    st.code(problem["code"])
+    st.code(problem["updated_code"])
 
     # Timer display with JavaScript
     start_time = st.session_state.start_time
