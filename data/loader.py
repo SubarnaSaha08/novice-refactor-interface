@@ -1,6 +1,6 @@
 import pandas as pd
 
-CSV_PATH = "assets/problems2.csv"
+CSV_PATH = "assets/problems.csv"
 
 def is_username_in_list(user_cell, username):
     if not user_cell:
